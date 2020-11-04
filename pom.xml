@@ -61,6 +61,23 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		<url>https://github.com/aoindustries/ao-sql/issues</url>
 	</issueManagement>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId><artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<!-- TODO: Remove this once there are no longer split packages -->
+						<Private-Package>
+							com.aoindustries.sql;-split-package:=first
+						</Private-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<profiles>
 		<profile>
 			<id>offlineLinks</id><activation><file><exists>src/main/java</exists></file></activation>
