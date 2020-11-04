@@ -36,7 +36,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name} Changelog"
 		shortTitle="Changelog"
 		tocLevels="1"
-		datePublished="2020-11-03T00:40:44-06:00"
+		datePublished="2020-11-04T16:00:35-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-sql:pom.version}" />
@@ -63,6 +63,10 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 						<code>SQLUtility</code> now accepts <code>Function</code> to generate exception instead of
 						<code>Class</code>.  Using lambdas is faster than reflection, and the compiler can verify the
 						presence of the constructor.
+					</li>
+					<li>
+						New class <code>SQLStreamables</code> for sending <code>Timestamp</code> objects across the wire.
+						These methods were previously part of <code>StreamableInput</code> and <code>StreamableOutput</code>.
 					</li>
 				</ul>
 			</changelog:release>
