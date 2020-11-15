@@ -22,6 +22,7 @@
  */
 package com.aoindustries.sql;
 
+import com.aoindustries.lang.Throwables;
 import com.aoindustries.util.ErrorPrinter;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -72,5 +73,14 @@ public class WrappedSQLException extends SQLException {
 				ErrorPrinter.CustomMessageHandler.printMessage(out, indent, "SQL Statement.....: ", ((WrappedSQLException)thrown).getSqlString());
 			}
 		});
+		Throwables.registerSurrogateFactory(WrappedSQLException.class, (template, cause) ->
+			new WrappedSQLException(
+				template.getMessage(),
+				template.getSQLState(),
+				template.getErrorCode(),
+				cause,
+				template.sqlString
+			)
+		);
 	}
 }

@@ -37,6 +37,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2020-11-04T16:00:35-06:00"
+		dateModified="2020-11-16T19:28:31-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-sql:pom.version}" />
@@ -67,6 +68,18 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 					<li>
 						New class <code>SQLStreamables</code> for sending <code>Timestamp</code> objects across the wire.
 						These methods were previously part of <code>StreamableInput</code> and <code>StreamableOutput</code>.
+					</li>
+					<li>
+						<p>
+							Now registering exception types for use with <code>Throwables.newSurrogate(…)</code> that supports creating new instances
+							of throwables in order to have caller stack trace.  When wrapped, the original throwable is the
+							cause of the new throwable.  When not wrapped, the original throwable is used directly and
+							caller stack trace is lost.
+						</p>
+						<p>
+							This is used to maintain exception types and states across thread boundaries, such as when an exception cause
+							is obtained from an <code>ExecutionException</code>.
+						</p>
 					</li>
 				</ul>
 			</changelog:release>
