@@ -37,7 +37,6 @@ public class WrappedSQLException extends SQLException {
 
 	final private String sqlString;
 
-	// TODO: Deprecate in favor of a static wrapper method that will not wrap exceptions that are already WrappedSQLException
 	public WrappedSQLException(
 		SQLException cause,
 		PreparedStatement pstmt
