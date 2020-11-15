@@ -40,6 +40,5 @@ public class Connections {
 	 *
 	 * @see  Connection#TRANSACTION_READ_COMMITTED
 	 */
-	// TODO: Globally use and enforce this as the default
 	public static final int DEFAULT_TRANSACTION_ISOLATION = Connection.TRANSACTION_READ_COMMITTED;
 }
