@@ -58,7 +58,7 @@ final public class SQLExceptions {
 	 *   …
 	 *   return future.get();
 	 * } catch(ExecutionException ee) {
-	 *   wrapAndThrowSQLException(ee, IOException.class, IOException::new);
+	 *   wrapAndThrowSQLException(ee);
 	 *   throw ee;
 	 * }</pre>
 	 *
@@ -66,30 +66,10 @@ final public class SQLExceptions {
 	 *                               {@link WrappedSQLException#WrappedSQLException(java.lang.String, java.lang.String, int, java.lang.Throwable, java.lang.String)}
 	 * @throws  SQLException  When cause is an instance of {@link SQLException}, throws {@code ee} wrapped via
 	 *                        {@link SQLException#SQLException(java.lang.String, java.lang.String, int, java.lang.Throwable)}.
+	 *
+	 * @see  ExecutionExceptions#wrapAndThrow(java.util.concurrent.ExecutionException, java.lang.Class, java.util.function.BiFunction)
 	 */
-	// TODO: More specializations of SQLException?
 	public static <X extends Throwable> void wrapAndThrowSQLException(ExecutionException ee) throws WrappedSQLException, SQLException {
-		if(ee != null) {
-			Throwable cause = ee.getCause();
-			if(cause instanceof WrappedSQLException) {
-				WrappedSQLException sqlCause = (WrappedSQLException)cause;
-				throw new WrappedSQLException(
-					sqlCause.getMessage(),
-					sqlCause.getSQLState(),
-					sqlCause.getErrorCode(),
-					ee,
-					sqlCause.getSqlString()
-				);
-			}
-			if(cause instanceof SQLException) {
-				SQLException sqlCause = (SQLException)cause;
-				throw new SQLException(
-					sqlCause.getMessage(),
-					sqlCause.getSQLState(),
-					sqlCause.getErrorCode(),
-					ee
-				);
-			}
-		}
+		ExecutionExceptions.wrapAndThrow(ee, SQLException.class, SQLException::new);
 	}
 }
