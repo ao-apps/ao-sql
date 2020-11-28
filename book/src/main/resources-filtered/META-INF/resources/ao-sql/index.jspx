@@ -34,6 +34,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2020-11-03T00:40:44-06:00"
+		dateModified="2020-11-28T06:33:02-06:00"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -44,9 +45,9 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		<header>
 			<ao:include
 				page="/ao-badges/badges.inc.jspx"
-				arg.projectStatus="alpha"
-				arg.managementStatus="preview"
-				arg.packagingStatus="developmental"
+				arg.projectStatus="current-stable"
+				arg.managementStatus="production"
+				arg.packagingStatus="active"
 				arg.javaseVersion="@{documented.javase.version}"
 				arg.semanticVersioning="2.0.0"
 				arg.license="lgpl-3.0"
