@@ -37,7 +37,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2020-11-04T16:00:35-06:00"
-		dateModified="2020-11-28T06:33:02-06:00"
+		dateModified="2020-11-28T20:35:44-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-sql:pom.version}" />
@@ -52,12 +52,21 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>Removed <code>SQLExceptions</code>, which was unused and not intended for production release.</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.0.1"
+			datePublished="2020-11-28T20:35:44-06:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>Removed <code>SQLExceptions</code>, which was unused and not intended for production release.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
