@@ -22,7 +22,7 @@
  */
 package com.aoindustries.sql;
 
-import static com.aoindustries.sql.ApplicationResources.accessor;
+import com.aoindustries.i18n.Resources;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -32,6 +32,8 @@ import java.math.BigDecimal;
  * @author  AO Industries, Inc.
  */
 final public class NanoInterval implements Serializable, Comparable<NanoInterval> {
+
+	private static final Resources RESOURCES = Resources.getResources(NanoInterval.class.getPackage());
 
 	private static final long serialVersionUID = 1;
 
@@ -54,9 +56,9 @@ final public class NanoInterval implements Serializable, Comparable<NanoInterval
 	}
 
 	public static String toString(long intervalNanos) {
-		if(intervalNanos < 1000000) return accessor.getMessage("NanoInterval.toString.micro", BigDecimal.valueOf(intervalNanos, 3));
-		if(intervalNanos < 1000000000) return accessor.getMessage("NanoInterval.toString.milli", BigDecimal.valueOf(intervalNanos/1000, 3));
-		return accessor.getMessage("NanoInterval.toString.second", BigDecimal.valueOf(intervalNanos/1000000, 3));
+		if(intervalNanos < 1000000) return RESOURCES.getMessage("NanoInterval.toString.micro", BigDecimal.valueOf(intervalNanos, 3));
+		if(intervalNanos < 1000000000) return RESOURCES.getMessage("NanoInterval.toString.milli", BigDecimal.valueOf(intervalNanos/1000, 3));
+		return RESOURCES.getMessage("NanoInterval.toString.second", BigDecimal.valueOf(intervalNanos/1000000, 3));
 	}
 
 	@Override

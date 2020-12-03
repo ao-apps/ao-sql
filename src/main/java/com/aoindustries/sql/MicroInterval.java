@@ -22,7 +22,7 @@
  */
 package com.aoindustries.sql;
 
-import static com.aoindustries.sql.ApplicationResources.accessor;
+import com.aoindustries.i18n.Resources;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -32,6 +32,8 @@ import java.math.BigDecimal;
  * @author  AO Industries, Inc.
  */
 final public class MicroInterval implements Serializable, Comparable<MicroInterval> {
+
+	private static final Resources RESOURCES = Resources.getResources(MicroInterval.class.getPackage());
 
 	private static final long serialVersionUID = 1;
 
@@ -54,8 +56,8 @@ final public class MicroInterval implements Serializable, Comparable<MicroInterv
 	}
 
 	public static String toString(long intervalMicros) {
-		if(intervalMicros < 1000000) return accessor.getMessage("MicroInterval.toString.milli", BigDecimal.valueOf(intervalMicros, 3));
-		return accessor.getMessage("MicroInterval.toString.second", BigDecimal.valueOf(intervalMicros/1000, 3));
+		if(intervalMicros < 1000000) return RESOURCES.getMessage("MicroInterval.toString.milli", BigDecimal.valueOf(intervalMicros, 3));
+		return RESOURCES.getMessage("MicroInterval.toString.second", BigDecimal.valueOf(intervalMicros/1000, 3));
 	}
 
 	@Override
