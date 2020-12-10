@@ -33,7 +33,7 @@ import java.math.BigDecimal;
  */
 final public class NanoInterval implements Serializable, Comparable<NanoInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(NanoInterval.class.getPackage());
+	private static final Resources RESOURCES = Resources.getResources(NanoInterval.class);
 
 	private static final long serialVersionUID = 1;
 
@@ -56,9 +56,9 @@ final public class NanoInterval implements Serializable, Comparable<NanoInterval
 	}
 
 	public static String toString(long intervalNanos) {
-		if(intervalNanos < 1000000) return RESOURCES.getMessage("NanoInterval.toString.micro", BigDecimal.valueOf(intervalNanos, 3));
-		if(intervalNanos < 1000000000) return RESOURCES.getMessage("NanoInterval.toString.milli", BigDecimal.valueOf(intervalNanos/1000, 3));
-		return RESOURCES.getMessage("NanoInterval.toString.second", BigDecimal.valueOf(intervalNanos/1000000, 3));
+		if(intervalNanos < 1000000) return RESOURCES.getMessage("toString.micro", BigDecimal.valueOf(intervalNanos, 3));
+		if(intervalNanos < 1000000000) return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalNanos/1000, 3));
+		return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalNanos/1000000, 3));
 	}
 
 	@Override

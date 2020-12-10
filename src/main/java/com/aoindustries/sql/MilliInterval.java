@@ -33,7 +33,7 @@ import java.math.BigDecimal;
  */
 final public class MilliInterval implements Serializable, Comparable<MilliInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(MilliInterval.class.getPackage());
+	private static final Resources RESOURCES = Resources.getResources(MilliInterval.class);
 
 	private static final long serialVersionUID = 1;
 
@@ -56,7 +56,7 @@ final public class MilliInterval implements Serializable, Comparable<MilliInterv
 	}
 
 	public static String toString(long interval) {
-		return RESOURCES.getMessage("MilliInterval.toString", BigDecimal.valueOf(interval, 3));
+		return RESOURCES.getMessage("toString", BigDecimal.valueOf(interval, 3));
 	}
 
 	@Override
