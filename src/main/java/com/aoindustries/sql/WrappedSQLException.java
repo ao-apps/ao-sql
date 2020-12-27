@@ -30,14 +30,33 @@ import java.sql.SQLException;
 /**
  * Wraps a <code>SQLException</code> to include its source SQL statement.
  *
+ * @deprecated  We have been increasingly using custom subtypes of {@link SQLException} to represent different
+ *              conditions, such as when no row is returned.  This allows the simple use of standard catch blocks to
+ *              handle different conditions accordingly.  However, wrapping the original exception defeats this, as it
+ *              just become a generic {@link SQLException}, albeit with SQL STATE and such copied from the original
+ *              exception.
+ *              <p>
+ *              The primary purpose of wrapping exceptions was to attach the SQL statement being processed at the time
+ *              of failure.  This statement is only used in error reporting, specifically via {@link ErrorPrinter}.  We
+ *              have created a new we to accomplish this, without altering or wrapping any exceptions:
+ *              {@linkplain ErrorPrinter#addSQL(java.lang.Throwable, java.sql.PreparedStatement) register an exception and corresponding SQL statement}
+ *              directly with {@link ErrorPrinter}, which will then automatically be included in error reports.
+ *              </p>
+ *
  * @author  AO Industries, Inc.
  */
+@Deprecated
 public class WrappedSQLException extends SQLException {
 
 	private static final long serialVersionUID = 1884080138318429559L;
 
 	final private String sqlString;
 
+	/**
+	 * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.sql.PreparedStatement)} instead of
+	 *              wrapping exceptions.
+	 */
+	@Deprecated
 	public WrappedSQLException(
 		SQLException cause,
 		PreparedStatement pstmt
@@ -45,6 +64,11 @@ public class WrappedSQLException extends SQLException {
 		this(cause, pstmt.toString());
 	}
 
+	/**
+	 * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
+	 *              wrapping exceptions.
+	 */
+	@Deprecated
 	public WrappedSQLException(
 		SQLException cause,
 		String sqlString
@@ -58,6 +82,10 @@ public class WrappedSQLException extends SQLException {
 		);
 	}
 
+	/**
+	 * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
+	 *              wrapping exceptions.
+	 */
 	public WrappedSQLException(String reason, String sqlState, int vendorCode, Throwable cause, String sqlString) {
 		super(reason, sqlState, vendorCode, cause);
 		this.sqlString = sqlString;
