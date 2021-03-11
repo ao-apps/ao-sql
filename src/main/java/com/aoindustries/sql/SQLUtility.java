@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2013, 2016, 2018, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2013, 2016, 2018, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -842,7 +842,7 @@ public class SQLUtility {
 	/**
 	 * Converts a number of seconds and nanoseconds into a given {@link Timestamp}.
 	 */
-	public static <X extends Throwable> void toTimestamp(long seconds, int nanos, Timestamp ts, Function<? super String,? extends X> xSupplier) throws X {
+	public static <X extends Throwable> void toTimestamp(long seconds, int nanos, Timestamp ts, Function<? super String, ? extends X> xSupplier) throws X {
 		String message;
 		// Avoid underflow or overflow on conversion to millis
 		if(seconds > MAX_TIMESTAMP_SECONDS) {
@@ -878,7 +878,7 @@ public class SQLUtility {
 	/**
 	 * Converts a number of seconds and nanoseconds into a new {@link Timestamp}.
 	 */
-	public static <X extends Throwable> Timestamp newTimestamp(long seconds, int nanos, Function<? super String,? extends X> xSupplier) throws X {
+	public static <X extends Throwable> Timestamp newTimestamp(long seconds, int nanos, Function<? super String, ? extends X> xSupplier) throws X {
 		Timestamp ts = new Timestamp(0);
 		toTimestamp(seconds, nanos, ts, xSupplier);
 		return ts;
@@ -905,7 +905,7 @@ public class SQLUtility {
 	/**
 	 * Converts a number of seconds and nanoseconds into a new {@link UnmodifiableTimestamp}.
 	 */
-	public static <X extends Throwable> UnmodifiableTimestamp newUnmodifiableTimestamp(long seconds, int nanos, Function<? super String,? extends X> xSupplier) throws X {
+	public static <X extends Throwable> UnmodifiableTimestamp newUnmodifiableTimestamp(long seconds, int nanos, Function<? super String, ? extends X> xSupplier) throws X {
 		String message;
 		// Avoid underflow or overflow on conversion to millis
 		if(seconds > MAX_TIMESTAMP_SECONDS) {
