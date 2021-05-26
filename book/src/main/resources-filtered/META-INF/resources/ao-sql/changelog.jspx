@@ -37,7 +37,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2020-11-04T16:00:35-06:00"
-		dateModified="2021-01-02T14:19:55-06:00"
+		dateModified="2021-05-25T18:54:28-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -58,6 +58,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 						<code><ao:a href="https://aoindustries.com/ao-lang/apidocs/com/aoindustries/util/ErrorPrinter.html">ErrorPrinter</ao:a></code>.
 						This allows the SQL statements to be logged while not altering exception types underneath the application.
 					</li>
+					<li>Updated dependencies.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
