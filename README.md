@@ -1,33 +1,33 @@
-# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://github.com/aoindustries) [AO SQL](https://github.com/aoindustries/ao-sql)
+# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://github.com/aoindustries) [AO OSS](https://github.com/aoindustries/ao-oss) / [SQL](https://github.com/aoindustries/ao-sql)
 <p>
 	<a href="https://aoindustries.com/life-cycle#project-current-stable">
-		<img src="https://aoindustries.com/ao-badges/project-current-stable.svg" alt="project: current stable" />
+		<img src="https://oss.aoapps.com/ao-badges/project-current-stable.svg" alt="project: current stable" />
 	</a>
 	<a href="https://aoindustries.com/life-cycle#management-production">
-		<img src="https://aoindustries.com/ao-badges/management-production.svg" alt="management: production" />
+		<img src="https://oss.aoapps.com/ao-badges/management-production.svg" alt="management: production" />
 	</a>
 	<a href="https://aoindustries.com/life-cycle#packaging-active">
-		<img src="https://aoindustries.com/ao-badges/packaging-active.svg" alt="packaging: active" />
+		<img src="https://oss.aoapps.com/ao-badges/packaging-active.svg" alt="packaging: active" />
 	</a>
 	<br />
 	<a href="https://docs.oracle.com/javase/8/docs/api/">
-		<img src="https://aoindustries.com/ao-badges/java-8.svg" alt="java: &gt;= 8" />
+		<img src="https://oss.aoapps.com/ao-badges/java-8.svg" alt="java: &gt;= 8" />
 	</a>
 	<a href="http://semver.org/spec/v2.0.0.html">
-		<img src="https://aoindustries.com/ao-badges/semver-2.0.0.svg" alt="semantic versioning: 2.0.0" />
+		<img src="https://oss.aoapps.com/ao-badges/semver-2.0.0.svg" alt="semantic versioning: 2.0.0" />
 	</a>
 	<a href="https://www.gnu.org/licenses/lgpl-3.0">
-		<img src="https://aoindustries.com/ao-badges/license-lgpl-3.0.svg" alt="license: LGPL v3" />
+		<img src="https://oss.aoapps.com/ao-badges/license-lgpl-3.0.svg" alt="license: LGPL v3" />
 	</a>
 </p>
 
 SQL and JDBC utilities.
 
 ## Project Links
-* [Project Home](https://aoindustries.com/ao-sql/)
-* [Changelog](https://aoindustries.com/ao-sql/changelog)
-* [API Docs](https://aoindustries.com/ao-sql/apidocs/)
-* [Maven Central Repository](https://search.maven.org/artifact/com.aoindustries/ao-sql)
+* [Project Home](https://oss.aoapps.com/sql/)
+* [Changelog](https://oss.aoapps.com/sql/changelog)
+* [API Docs](https://oss.aoapps.com/sql/apidocs/)
+* [Maven Central Repository](https://search.maven.org/artifact/com.aoapps/ao-sql)
 * [GitHub](https://github.com/aoindustries/ao-sql)
 
 ## Modules
