@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2016, 2017, 2018, 2020  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2016, 2017, 2018, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,10 +20,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-sql.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.sql;
+package com.aoapps.sql;
 
-import com.aoindustries.lang.Throwables;
-import com.aoindustries.util.ErrorPrinter;
+import com.aoapps.lang.Throwables;
+import com.aoapps.lang.util.ErrorPrinter;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

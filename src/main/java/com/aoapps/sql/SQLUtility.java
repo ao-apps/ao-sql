@@ -20,10 +20,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-sql.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.sql;
+package com.aoapps.sql;
 
-import com.aoindustries.lang.Throwables;
-import com.aoindustries.util.CalendarUtils;
+import com.aoapps.lang.Throwables;
+import com.aoapps.lang.util.CalendarUtils;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
@@ -181,7 +181,7 @@ public class SQLUtility {
 	/**
 	 * @param timeZone  The time zone to use or {@code null} to use the default time zone
 	 *
-	 * @see  CalendarUtils#parseDateTime(java.lang.String, java.util.TimeZone, com.aoindustries.util.CalendarUtils.DateTimeProducer)
+	 * @see  CalendarUtils#parseDateTime(java.lang.String, java.util.TimeZone, com.aoapps.lang.util.CalendarUtils.DateTimeProducer)
 	 */
 	public static Timestamp parseDateTime(String dateTime, TimeZone timeZone) throws IllegalArgumentException {
 		if(dateTime == null) return null;

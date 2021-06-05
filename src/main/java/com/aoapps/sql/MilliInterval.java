@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2013, 2016, 2020  AO Industries, Inc.
+ * Copyright (C) 2008, 2011, 2013, 2016, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,50 +20,49 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-sql.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.sql;
+package com.aoapps.sql;
 
-import com.aoindustries.i18n.Resources;
+import com.aoapps.lang.i18n.Resources;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Encapsulates an interval in microseconds.
+ * Encapsulates an interval in milliseconds.
  *
  * @author  AO Industries, Inc.
  */
-final public class MicroInterval implements Serializable, Comparable<MicroInterval> {
+final public class MilliInterval implements Serializable, Comparable<MilliInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(MicroInterval.class);
+	private static final Resources RESOURCES = Resources.getResources(MilliInterval.class);
 
 	private static final long serialVersionUID = 1;
 
-	final private long intervalMicros;
+	final private long milliInterval;
 
-	public MicroInterval(long intervalMicros) {
-		this.intervalMicros = intervalMicros;
+	public MilliInterval(long milliInterval) {
+		this.milliInterval = milliInterval;
 	}
 
 	/**
-	 * Gets the interval in microseconds.
+	 * Gets the interval in milliseconds.
 	 */
-	public long getIntervalMicros() {
-		return intervalMicros;
+	public long getIntervalMillis() {
+		return milliInterval;
 	}
 
 	@Override
 	public String toString() {
-		return toString(intervalMicros);
+		return toString(milliInterval);
 	}
 
-	public static String toString(long intervalMicros) {
-		if(intervalMicros < 1000000) return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalMicros, 3));
-		return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalMicros/1000, 3));
+	public static String toString(long interval) {
+		return RESOURCES.getMessage("toString", BigDecimal.valueOf(interval, 3));
 	}
 
 	@Override
-	public int compareTo(MicroInterval o) {
-		if(intervalMicros<o.intervalMicros) return -1;
-		if(intervalMicros>o.intervalMicros) return 1;
+	public int compareTo(MilliInterval o) {
+		if(milliInterval<o.milliInterval) return -1;
+		if(milliInterval>o.milliInterval) return 1;
 		return 0;
 	}
 }

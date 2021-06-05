@@ -20,10 +20,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-sql.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.sql;
+package com.aoapps.sql;
 
-import com.aoindustries.util.i18n.EditableResourceBundle;
-import com.aoindustries.util.i18n.EditableResourceBundleSet;
+import com.aoapps.hodgepodge.i18n.EditableResourceBundle;
+import com.aoapps.hodgepodge.i18n.EditableResourceBundleSet;
 import java.io.File;
 import java.util.Locale;
 
@@ -39,7 +39,7 @@ public final class ApplicationResources extends EditableResourceBundle {
 	);
 
 	static File getSourceFile(String filename) {
-		return new File(System.getProperty("user.home") + "/maven2/ao/oss/sql/src/main/resources/com/aoindustries/sql", filename);
+		return new File(System.getProperty("user.home") + "/maven2/ao/oss/sql/src/main/resources/com/aoapps/sql", filename);
 	}
 
 	public ApplicationResources() {
