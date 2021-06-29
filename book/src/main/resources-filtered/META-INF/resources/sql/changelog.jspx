@@ -37,7 +37,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2020-11-04T16:00:35-06:00"
-		dateModified="2021-06-03T22:53:21-05:00"
+		dateModified="2021-06-27T16:13:41-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -54,11 +54,12 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 						sub-project is used only for development and is never deployed to artifact repositories.
 					</li>
 					<li>
-						Deprecated <code><ao:a href="apidocs/com/aoapps/sql/WrappedSQLException.html">WrappedSQLException</ao:a></code>
+						Deprecated <code><ao:a href="apidocs/com.aoapps.sql/com/aoapps/sql/WrappedSQLException.html">WrappedSQLException</ao:a></code>
 						in favor of directly registering the SQL statements with
-						<code><ao:a href="https://oss.aoapps.com/lang/apidocs/com/aoapps/lang/util/ErrorPrinter.html">ErrorPrinter</ao:a></code>.
+						<code><ao:a href="https://oss.aoapps.com/lang/apidocs/com.aoapps.lang/com/aoapps/lang/util/ErrorPrinter.html">ErrorPrinter</ao:a></code>.
 						This allows the SQL statements to be logged while not altering exception types underneath the application.
 					</li>
+					<li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
 					<li>Maven artifact relocated from <code>com.aoindustries:ao-sql</code> to <code>com.aoapps:ao-sql</code>.</li>
 					<li>Package renamed from <code>com.aoindustries.sql</code> to <code>com.aoapps.sql</code>.</li>
 				</ul>

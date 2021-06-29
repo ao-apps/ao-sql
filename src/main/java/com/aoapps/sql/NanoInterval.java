@@ -25,6 +25,7 @@ package com.aoapps.sql;
 import com.aoapps.lang.i18n.Resources;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ResourceBundle;
 
 /**
  * Encapsulates an interval in nanoseconds.
@@ -33,7 +34,7 @@ import java.math.BigDecimal;
  */
 final public class NanoInterval implements Serializable, Comparable<NanoInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(NanoInterval.class);
+	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, NanoInterval.class);
 
 	private static final long serialVersionUID = 1;
 

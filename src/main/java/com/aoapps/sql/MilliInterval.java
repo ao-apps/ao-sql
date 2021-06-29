@@ -25,6 +25,7 @@ package com.aoapps.sql;
 import com.aoapps.lang.i18n.Resources;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ResourceBundle;
 
 /**
  * Encapsulates an interval in milliseconds.
@@ -33,7 +34,7 @@ import java.math.BigDecimal;
  */
 final public class MilliInterval implements Serializable, Comparable<MilliInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(MilliInterval.class);
+	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MilliInterval.class);
 
 	private static final long serialVersionUID = 1;
 
