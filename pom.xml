@@ -52,7 +52,7 @@ along with ao-sql.  If not, see <http://www.gnu.org/licenses />.
 				<li><a target="${javadoc.target}" href="https://oss.aoapps.com/sql/wrapper/">AO SQL Wrapper</a></li>
 			</ul>
 		</div>]]></javadoc.modules>
-		<!-- SonarCloud.io -->
+		<!-- SonarQube -->
 		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
 		<sonar.organization>aoindustries</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
