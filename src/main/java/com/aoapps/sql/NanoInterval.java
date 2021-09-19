@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
  */
 final public class NanoInterval implements Serializable, Comparable<NanoInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, NanoInterval.class);
+	private static final Resources RESOURCES = Resources.getResources(NanoInterval.class, ResourceBundle::getBundle);
 
 	private static final long serialVersionUID = 1;
 
