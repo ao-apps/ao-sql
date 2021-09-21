@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
  */
 final public class MicroInterval implements Serializable, Comparable<MicroInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(MicroInterval.class, ResourceBundle::getBundle);
+	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MicroInterval.class);
 
 	private static final long serialVersionUID = 1;
 

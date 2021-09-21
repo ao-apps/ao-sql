@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
  */
 final public class MilliInterval implements Serializable, Comparable<MilliInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(MilliInterval.class, ResourceBundle::getBundle);
+	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MilliInterval.class);
 
 	private static final long serialVersionUID = 1;
 
