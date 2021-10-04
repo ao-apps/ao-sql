@@ -29,7 +29,7 @@ import java.sql.Timestamp;
  *
  * @author  AO Industries, Inc.
  */
-final public class UnmodifiableTimestamp extends Timestamp implements Cloneable {
+public final class UnmodifiableTimestamp extends Timestamp implements Cloneable {
 
 	private static final long serialVersionUID = 1L;
 

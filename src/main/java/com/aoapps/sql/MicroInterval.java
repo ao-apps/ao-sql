@@ -32,13 +32,13 @@ import java.util.ResourceBundle;
  *
  * @author  AO Industries, Inc.
  */
-final public class MicroInterval implements Serializable, Comparable<MicroInterval> {
+public final class MicroInterval implements Serializable, Comparable<MicroInterval> {
 
 	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MicroInterval.class);
 
 	private static final long serialVersionUID = 1;
 
-	final private long intervalMicros;
+	private final long intervalMicros;
 
 	public MicroInterval(long intervalMicros) {
 		this.intervalMicros = intervalMicros;

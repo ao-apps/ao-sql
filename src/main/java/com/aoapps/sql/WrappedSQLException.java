@@ -50,7 +50,7 @@ public class WrappedSQLException extends SQLException {
 
 	private static final long serialVersionUID = 1884080138318429559L;
 
-	final private String sqlString;
+	private final String sqlString;
 
 	/**
 	 * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.sql.PreparedStatement)} instead of

@@ -30,11 +30,11 @@ import java.io.Serializable;
  *
  * @author  AO Industries, Inc.
  */
-final public class Interval implements Serializable, Comparable<Interval> {
+public final class Interval implements Serializable, Comparable<Interval> {
 
 	private static final long serialVersionUID = 1;
 
-	final private long interval;
+	private final long interval;
 
 	public Interval(long seconds) {
 		this.interval = seconds;

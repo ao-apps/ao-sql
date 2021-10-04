@@ -32,13 +32,13 @@ import java.util.ResourceBundle;
  *
  * @author  AO Industries, Inc.
  */
-final public class NanoInterval implements Serializable, Comparable<NanoInterval> {
+public final class NanoInterval implements Serializable, Comparable<NanoInterval> {
 
 	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, NanoInterval.class);
 
 	private static final long serialVersionUID = 1;
 
-	final private long intervalNanos;
+	private final long intervalNanos;
 
 	public NanoInterval(long intervalNanos) {
 		this.intervalNanos = intervalNanos;
