@@ -258,18 +258,18 @@ public class SQLUtility {
 	 * Converts a number of pennies into decimal representation.
 	 */
 	public static String formatDecimal2(int pennies) {
-		StringBuilder SB=new StringBuilder(12);
-		if(pennies<0) {
-			SB.append('-');
-			pennies=-pennies;
+		StringBuilder sb = new StringBuilder(12);
+		if(pennies < 0) {
+			sb.append('-');
+			pennies = -pennies;
 		}
-		SB
-			.append(pennies/100)
+		sb
+			.append(pennies / 100)
 			.append('.')
 		;
-		pennies%=100;
-		if(pennies<10) SB.append('0');
-		return SB
+		pennies %= 100;
+		if(pennies < 10) sb.append('0');
+		return sb
 			.append(pennies)
 			.toString()
 		;
@@ -279,18 +279,18 @@ public class SQLUtility {
 	 * Converts a number of pennies into decimal representation.
 	 */
 	public static String formatDecimal2(long pennies) {
-		StringBuilder SB=new StringBuilder(21);
-		if(pennies<0) {
-			SB.append('-');
-			pennies=-pennies;
+		StringBuilder sb = new StringBuilder(21);
+		if(pennies < 0) {
+			sb.append('-');
+			pennies = -pennies;
 		}
-		SB
-			.append(pennies/100)
+		sb
+			.append(pennies / 100)
 			.append('.')
 		;
-		int i=(int)(pennies%100);
-		if(i<10) SB.append('0');
-		return SB
+		int i = (int)(pennies % 100);
+		if(i < 10) sb.append('0');
+		return sb
 			.append(i)
 			.toString()
 		;
@@ -354,19 +354,19 @@ public class SQLUtility {
 	 * Converts a number of millis into decimal representation.
 	 */
 	public static String formatDecimal3(int millis) {
-		StringBuilder SB=new StringBuilder(10);
-		if(millis<0) {
-			SB.append('-');
-			millis=-millis;
+		StringBuilder sb = new StringBuilder(10);
+		if(millis < 0) {
+			sb.append('-');
+			millis = -millis;
 		}
-		SB
-			.append(millis/1000)
+		sb
+			.append(millis / 1000)
 			.append('.')
 		;
-		millis%=1000;
-		if(millis<10) SB.append("00");
-		else if(millis<100) SB.append('0');
-		return SB
+		millis %= 1000;
+		if(millis < 10) sb.append("00");
+		else if(millis < 100) sb.append('0');
+		return sb
 			.append(millis)
 			.toString()
 		;
@@ -376,19 +376,19 @@ public class SQLUtility {
 	 * Converts a number of millis into decimal representation.
 	 */
 	public static String formatDecimal3(long millis) {
-		StringBuilder SB=new StringBuilder(10);
-		if(millis<0) {
-			SB.append('-');
-			millis=-millis;
+		StringBuilder sb = new StringBuilder(10);
+		if(millis < 0) {
+			sb.append('-');
+			millis = -millis;
 		}
-		SB
-			.append(millis/1000)
+		sb
+			.append(millis / 1000)
 			.append('.')
 		;
-		millis%=1000;
-		if(millis<10) SB.append("00");
-		else if(millis<100) SB.append('0');
-		return SB
+		millis %= 1000;
+		if(millis < 10) sb.append("00");
+		else if(millis < 100) sb.append('0');
+		return sb
 			.append(millis)
 			.toString()
 		;
@@ -490,7 +490,7 @@ public class SQLUtility {
 		int[] widest
 	) throws IOException {
 		int numCols = lineCounts.length;
-		
+
 		// Figure out how many lines of output this row will be
 		int maxLineCount = 1;
 		for(int col = 0; col < numCols; col++) {
