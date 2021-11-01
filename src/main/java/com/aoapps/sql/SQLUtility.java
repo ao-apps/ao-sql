@@ -31,6 +31,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.TimeZone;
 import java.util.function.Function;
@@ -754,11 +755,6 @@ public class SQLUtility {
 					}
 					return row;
 				}
-
-				@Override
-				public void remove() {
-					throw new UnsupportedOperationException();
-				}
 			},
 			out,
 			isInteractive,
@@ -786,16 +782,12 @@ public class SQLUtility {
 				}
 
 				@Override
-				public Object[] next() {
+				public Object[] next() throws NoSuchElementException {
+					if(!hasNext()) throw new NoSuchElementException();
 					Object[] row = new Object[numCols];
 					System.arraycopy(values, index, row, 0, numCols);
 					index += numCols;
 					return row;
-				}
-
-				@Override
-				public void remove() {
-					throw new UnsupportedOperationException();
 				}
 			},
 			out,
