@@ -739,6 +739,7 @@ public class SQLUtility {
 		final int numCols = alignRights.length;
 		printTable(
 			titles,
+			// Java 9: new Iterator<>
 			() -> new Iterator<Object[]>() {
 				private final Iterator<Object> valuesIter = values.iterator();
 
@@ -773,6 +774,7 @@ public class SQLUtility {
 		final int numCols = alignRights.length;
 		printTable(
 			titles,
+			// Java 9: new Iterator<>
 			() -> new Iterator<Object[]>() {
 				private int index = 0;
 
