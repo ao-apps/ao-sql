@@ -29,9 +29,10 @@ import java.sql.Connection;
  *
  * @author  AO Industries, Inc.
  */
-public class Connections {
+public abstract class Connections {
 
-	private Connections() {}
+	/** Make no instances. */
+	private Connections() {throw new AssertionError();}
 
 	/**
 	 * The default {@linkplain Connection#getTransactionIsolation() transaction isolation}.

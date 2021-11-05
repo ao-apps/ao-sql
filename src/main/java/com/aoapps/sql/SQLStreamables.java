@@ -36,10 +36,10 @@ import java.time.Instant;
  *
  * @author  AO Industries, Inc.
  */
-public class SQLStreamables {
+public abstract class SQLStreamables {
 
-	private SQLStreamables() {
-	}
+	/** Make no instances. */
+	private SQLStreamables() {throw new AssertionError();}
 
 	/**
 	 * Reads a {@link Timestamp}, maintaining the full nanosecond precision.

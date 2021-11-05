@@ -41,10 +41,10 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
-public class SQLUtility {
+public abstract class SQLUtility {
 
-	private SQLUtility() {
-	}
+	/** Make no instances. */
+	private SQLUtility() {throw new AssertionError();}
 
 	/**
 	 * Enables the printing of unicode based tables instead of ASCII.
