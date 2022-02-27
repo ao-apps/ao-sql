@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2013, 2016, 2018, 2019, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2013, 2016, 2018, 2019, 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -41,7 +41,7 @@ import java.util.function.Function;
  *
  * @author  AO Industries, Inc.
  */
-public abstract class SQLUtility {
+public final class SQLUtility {
 
 	/** Make no instances. */
 	private SQLUtility() {throw new AssertionError();}
