@@ -35,38 +35,46 @@ import java.util.ResourceBundle;
  */
 public final class NanoInterval implements Serializable, Comparable<NanoInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, NanoInterval.class);
+  private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, NanoInterval.class);
 
-	private static final long serialVersionUID = 1;
+  private static final long serialVersionUID = 1;
 
-	private final long intervalNanos;
+  private final long intervalNanos;
 
-	public NanoInterval(long intervalNanos) {
-		this.intervalNanos = intervalNanos;
-	}
+  public NanoInterval(long intervalNanos) {
+    this.intervalNanos = intervalNanos;
+  }
 
-	/**
-	 * Gets the interval in nanoseconds.
-	 */
-	public long getIntervalNanos() {
-		return intervalNanos;
-	}
+  /**
+   * Gets the interval in nanoseconds.
+   */
+  public long getIntervalNanos() {
+    return intervalNanos;
+  }
 
-	@Override
-	public String toString() {
-		return toString(intervalNanos);
-	}
+  @Override
+  public String toString() {
+    return toString(intervalNanos);
+  }
 
-	public static String toString(long intervalNanos) {
-		if(intervalNanos < 1000000) return RESOURCES.getMessage("toString.micro", BigDecimal.valueOf(intervalNanos, 3));
-		if(intervalNanos < 1000000000) return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalNanos/1000, 3));
-		return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalNanos/1000000, 3));
-	}
+  public static String toString(long intervalNanos) {
+    if (intervalNanos < 1000000) {
+      return RESOURCES.getMessage("toString.micro", BigDecimal.valueOf(intervalNanos, 3));
+    }
+    if (intervalNanos < 1000000000) {
+      return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalNanos/1000, 3));
+    }
+    return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalNanos/1000000, 3));
+  }
 
-	@Override
-	public int compareTo(NanoInterval o) {
-		if(intervalNanos<o.intervalNanos) return -1;
-		if(intervalNanos>o.intervalNanos) return 1;
-		return 0;
-	}
+  @Override
+  public int compareTo(NanoInterval o) {
+    if (intervalNanos<o.intervalNanos) {
+      return -1;
+    }
+    if (intervalNanos>o.intervalNanos) {
+      return 1;
+    }
+    return 0;
+  }
 }

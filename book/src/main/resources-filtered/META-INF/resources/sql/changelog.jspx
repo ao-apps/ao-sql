@@ -22,121 +22,121 @@ You should have received a copy of the GNU Lesser General Public License
 along with ao-sql.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <jsp:root
-	xmlns:ao="https://oss.aoapps.com/taglib/"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
-	xmlns:core="https://semanticcms.com/core/taglib/"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:jsp="http://java.sun.com/JSP/Page"
-	version="2.1"
+  xmlns:ao="https://oss.aoapps.com/taglib/"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:changelog="https://semanticcms.com/changelog/taglib/"
+  xmlns:core="https://semanticcms.com/core/taglib/"
+  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  version="2.1"
 >
-	<jsp:directive.page language="java" pageEncoding="UTF-8" />
-	<jsp:directive.page session="false" />
-	<core:page
-		title="@{documented.name} Changelog"
-		shortTitle="Changelog"
-		tocLevels="1"
-		datePublished="2020-11-04T16:00:35-06:00"
-		dateModified="2022-02-16T01:04:16-06:00"
-	>
-		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
-			<changelog:release
-				projectName="@{documented.name}"
-				version="@{project.version}"
-				groupId="@{project.groupId}"
-				artifactId="@{documented.artifactId}"
-				repository="@{nexusUrl}content/repositories/snapshots/"
-				scmUrl="@{project.scm.url}"
-			/>
-		</c:if>
+  <jsp:directive.page language="java" pageEncoding="UTF-8" />
+  <jsp:directive.page session="false" />
+  <core:page
+    title="@{documented.name} Changelog"
+    shortTitle="Changelog"
+    tocLevels="1"
+    datePublished="2020-11-04T16:00:35-06:00"
+    dateModified="2022-02-16T01:04:16-06:00"
+  >
+    <c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
+      <changelog:release
+        projectName="@{documented.name}"
+        version="@{project.version}"
+        groupId="@{project.groupId}"
+        artifactId="@{documented.artifactId}"
+        repository="@{nexusUrl}content/repositories/snapshots/"
+        scmUrl="@{project.scm.url}"
+      />
+    </c:if>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="2.0.1"
-			datePublished="2022-02-16T01:04:16-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Added missing <code>NoSuchElementException</code> from implementations of <code>Iterator</code>.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="2.0.1"
+      datePublished="2022-02-16T01:04:16-06:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Added missing <code>NoSuchElementException</code> from implementations of <code>Iterator</code>.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="2.0.0"
-			datePublished="2021-07-19T22:01:54-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>
-					Split development-only classes into a new sub-project in <code>devel/</code>.  This
-					sub-project is used only for development and is never deployed to artifact repositories.
-				</li>
-				<li>
-					Deprecated <code><ao:a href="apidocs/com.aoapps.sql/com/aoapps/sql/WrappedSQLException.html">WrappedSQLException</ao:a></code>
-					in favor of directly registering the SQL statements with
-					<code><ao:a href="https://oss.aoapps.com/lang/apidocs/com.aoapps.lang/com/aoapps/lang/util/ErrorPrinter.html">ErrorPrinter</ao:a></code>.
-					This allows the SQL statements to be logged while not altering exception types underneath the application.
-				</li>
-				<li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
-				<li>Maven artifact relocated from <code>com.aoindustries:ao-sql</code> to <code>com.aoapps:ao-sql</code>.</li>
-				<li>Package renamed from <code>com.aoindustries.sql</code> to <code>com.aoapps.sql</code>.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="2.0.0"
+      datePublished="2021-07-19T22:01:54-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>
+          Split development-only classes into a new sub-project in <code>devel/</code>.  This
+          sub-project is used only for development and is never deployed to artifact repositories.
+        </li>
+        <li>
+          Deprecated <code><ao:a href="apidocs/com.aoapps.sql/com/aoapps/sql/WrappedSQLException.html">WrappedSQLException</ao:a></code>
+          in favor of directly registering the SQL statements with
+          <code><ao:a href="https://oss.aoapps.com/lang/apidocs/com.aoapps.lang/com/aoapps/lang/util/ErrorPrinter.html">ErrorPrinter</ao:a></code>.
+          This allows the SQL statements to be logged while not altering exception types underneath the application.
+        </li>
+        <li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
+        <li>Maven artifact relocated from <code>com.aoindustries:ao-sql</code> to <code>com.aoapps:ao-sql</code>.</li>
+        <li>Package renamed from <code>com.aoindustries.sql</code> to <code>com.aoapps.sql</code>.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.1"
-			datePublished="2020-11-28T20:35:44-06:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Removed <code>SQLExceptions</code>, which was unused and not intended for production release.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.1"
+      datePublished="2020-11-28T20:35:44-06:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Removed <code>SQLExceptions</code>, which was unused and not intended for production release.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.0"
-			datePublished="2020-11-28T06:37:32-06:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>
-					New project for SQL and JDBC utilities split from <core:link book="/lang" page="/index.jspx" />
-					and <core:link book="/hodgepodge" page="/index.jspx" />.
-				</li>
-				<li>New utility class <code>Connections</code> for working with <code>java.sql.Connection</code>.</li>
-				<li>
-					<code>SQLUtility</code> now accepts <code>Function</code> to generate exception instead of
-					<code>Class</code>.  Using lambdas is faster than reflection, and the compiler can verify the
-					presence of the constructor.
-				</li>
-				<li>
-					New class <code>SQLStreamables</code> for sending <code>Timestamp</code> objects across the wire.
-					These methods were previously part of <code>StreamableInput</code> and <code>StreamableOutput</code>.
-				</li>
-				<li>
-					<p>
-						Now registering exception types for use with <code>Throwables.newSurrogate(…)</code> that supports creating new instances
-						of throwables in order to have caller stack trace.  When wrapped, the original throwable is the
-						cause of the new throwable.  When not wrapped, the original throwable is used directly and
-						caller stack trace is lost.
-					</p>
-					<p>
-						This is used to maintain exception types and states across thread boundaries, such as when an exception cause
-						is obtained from an <code>ExecutionException</code>.
-					</p>
-				</li>
-			</ul>
-		</changelog:release>
-	</core:page>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.0"
+      datePublished="2020-11-28T06:37:32-06:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>
+          New project for SQL and JDBC utilities split from <core:link book="/lang" page="/index.jspx" />
+          and <core:link book="/hodgepodge" page="/index.jspx" />.
+        </li>
+        <li>New utility class <code>Connections</code> for working with <code>java.sql.Connection</code>.</li>
+        <li>
+          <code>SQLUtility</code> now accepts <code>Function</code> to generate exception instead of
+          <code>Class</code>.  Using lambdas is faster than reflection, and the compiler can verify the
+          presence of the constructor.
+        </li>
+        <li>
+          New class <code>SQLStreamables</code> for sending <code>Timestamp</code> objects across the wire.
+          These methods were previously part of <code>StreamableInput</code> and <code>StreamableOutput</code>.
+        </li>
+        <li>
+          <p>
+            Now registering exception types for use with <code>Throwables.newSurrogate(…)</code> that supports creating new instances
+            of throwables in order to have caller stack trace.  When wrapped, the original throwable is the
+            cause of the new throwable.  When not wrapped, the original throwable is used directly and
+            caller stack trace is lost.
+          </p>
+          <p>
+            This is used to maintain exception types and states across thread boundaries, such as when an exception cause
+            is obtained from an <code>ExecutionException</code>.
+          </p>
+        </li>
+      </ul>
+    </changelog:release>
+  </core:page>
 </jsp:root>

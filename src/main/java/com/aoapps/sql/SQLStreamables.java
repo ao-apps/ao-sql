@@ -39,83 +39,89 @@ import java.time.Instant;
  */
 public final class SQLStreamables {
 
-	/** Make no instances. */
-	private SQLStreamables() {throw new AssertionError();}
+  /** Make no instances. */
+  private SQLStreamables() {
+    throw new AssertionError();
+  }
 
-	/**
-	 * Reads a {@link Timestamp}, maintaining the full nanosecond precision.
-	 * Time zone offset is not maintained.
-	 * <p>
-	 * See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.
-	 * </p>
-	 */
-	public static Timestamp readTimestamp(DataInputStream in) throws IOException {
-		long seconds = in.readLong();
-		int nanos = StreamableInput.readCompressedInt(in);
-		return SQLUtility.newTimestamp(seconds, nanos, IOException::new);
-	}
+  /**
+   * Reads a {@link Timestamp}, maintaining the full nanosecond precision.
+   * Time zone offset is not maintained.
+   * <p>
+   * See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.
+   * </p>
+   */
+  public static Timestamp readTimestamp(DataInputStream in) throws IOException {
+    long seconds = in.readLong();
+    int nanos = StreamableInput.readCompressedInt(in);
+    return SQLUtility.newTimestamp(seconds, nanos, IOException::new);
+  }
 
-	/**
-	 * Reads a possibly-{@code null} {@link Timestamp}.
-	 *
-	 * @see  #readTimestamp(java.io.DataInputStream)
-	 */
-	public static Timestamp readNullTimestamp(DataInputStream in) throws IOException {
-		return in.readBoolean() ? readTimestamp(in) : null;
-	}
+  /**
+   * Reads a possibly-{@code null} {@link Timestamp}.
+   *
+   * @see  #readTimestamp(java.io.DataInputStream)
+   */
+  public static Timestamp readNullTimestamp(DataInputStream in) throws IOException {
+    return in.readBoolean() ? readTimestamp(in) : null;
+  }
 
-	/**
-	 * Reads an {@link UnmodifiableTimestamp}, maintaining the full nanosecond precision.
-	 * Time zone offset is not maintained.
-	 * <p>
-	 * See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.
-	 * </p>
-	 */
-	public static UnmodifiableTimestamp readUnmodifiableTimestamp(DataInputStream in) throws IOException {
-		long seconds = in.readLong();
-		int nanos = StreamableInput.readCompressedInt(in);
-		return SQLUtility.newUnmodifiableTimestamp(seconds, nanos, IOException::new);
-	}
+  /**
+   * Reads an {@link UnmodifiableTimestamp}, maintaining the full nanosecond precision.
+   * Time zone offset is not maintained.
+   * <p>
+   * See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.
+   * </p>
+   */
+  public static UnmodifiableTimestamp readUnmodifiableTimestamp(DataInputStream in) throws IOException {
+    long seconds = in.readLong();
+    int nanos = StreamableInput.readCompressedInt(in);
+    return SQLUtility.newUnmodifiableTimestamp(seconds, nanos, IOException::new);
+  }
 
-	/**
-	 * Reads a possibly-{@code null} {@link UnmodifiableTimestamp}.
-	 *
-	 * @see  #readUnmodifiableTimestamp(java.io.DataInputStream)
-	 */
-	public static UnmodifiableTimestamp readNullUnmodifiableTimestamp(DataInputStream in) throws IOException {
-		return in.readBoolean() ? readUnmodifiableTimestamp(in) : null;
-	}
+  /**
+   * Reads a possibly-{@code null} {@link UnmodifiableTimestamp}.
+   *
+   * @see  #readUnmodifiableTimestamp(java.io.DataInputStream)
+   */
+  public static UnmodifiableTimestamp readNullUnmodifiableTimestamp(DataInputStream in) throws IOException {
+    return in.readBoolean() ? readUnmodifiableTimestamp(in) : null;
+  }
 
-	/**
-	 * Writes a {@link Timestamp}, maintaining the full nanosecond precision.
-	 * Time zone offset is not maintained.
-	 * <p>
-	 * The wire protocol is {@link DataOutputStream#writeLong(long)} number of seconds followed
-	 * by {@link StreamableOutput#writeCompressedInt(int) compressed int} number of nanoseconds.
-	 * </p>
-	 * <p>
-	 * This is deliberately compatible with {@link Instant} that is part of Java 8.
-	 * Once Java 8 is our minimum Java version, many uses of {@link Timestamp} will
-	 * change to {@link Instant}.
-	 * </p>
-	 */
-	public static void writeTimestamp(Timestamp ts, DataOutputStream out) throws IOException {
-		// Java 1.8: Math.floorDiv
-		long millis = ts.getTime();
-		long seconds = millis / 1000;
-		if((millis % 1000) < 0) seconds--;
-		out.writeLong(seconds);
-		assert StreamableOutput.MAX_COMPRESSED_INT_VALUE >= 999999999 : "All nano range (0 - 999999999) will fit in compressed ints";
-		StreamableOutput.writeCompressedInt(ts.getNanos(), out);
-	}
+  /**
+   * Writes a {@link Timestamp}, maintaining the full nanosecond precision.
+   * Time zone offset is not maintained.
+   * <p>
+   * The wire protocol is {@link DataOutputStream#writeLong(long)} number of seconds followed
+   * by {@link StreamableOutput#writeCompressedInt(int) compressed int} number of nanoseconds.
+   * </p>
+   * <p>
+   * This is deliberately compatible with {@link Instant} that is part of Java 8.
+   * Once Java 8 is our minimum Java version, many uses of {@link Timestamp} will
+   * change to {@link Instant}.
+   * </p>
+   */
+  public static void writeTimestamp(Timestamp ts, DataOutputStream out) throws IOException {
+    // Java 1.8: Math.floorDiv
+    long millis = ts.getTime();
+    long seconds = millis / 1000;
+    if ((millis % 1000) < 0) {
+      seconds--;
+    }
+    out.writeLong(seconds);
+    assert StreamableOutput.MAX_COMPRESSED_INT_VALUE >= 999999999 : "All nano range (0 - 999999999) will fit in compressed ints";
+    StreamableOutput.writeCompressedInt(ts.getNanos(), out);
+  }
 
-	/**
-	 * Writes a possibly-{@code null} {@link Timestamp}.
-	 *
-	 * @see  #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)
-	 */
-	public static void writeNullTimestamp(Timestamp ts, DataOutputStream out) throws IOException {
-		out.writeBoolean(ts != null);
-		if(ts != null) writeTimestamp(ts, out);
-	}
+  /**
+   * Writes a possibly-{@code null} {@link Timestamp}.
+   *
+   * @see  #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)
+   */
+  public static void writeNullTimestamp(Timestamp ts, DataOutputStream out) throws IOException {
+    out.writeBoolean(ts != null);
+    if (ts != null) {
+      writeTimestamp(ts, out);
+    }
+  }
 }

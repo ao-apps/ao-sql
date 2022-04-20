@@ -35,37 +35,43 @@ import java.util.ResourceBundle;
  */
 public final class MicroInterval implements Serializable, Comparable<MicroInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MicroInterval.class);
+  private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MicroInterval.class);
 
-	private static final long serialVersionUID = 1;
+  private static final long serialVersionUID = 1;
 
-	private final long intervalMicros;
+  private final long intervalMicros;
 
-	public MicroInterval(long intervalMicros) {
-		this.intervalMicros = intervalMicros;
-	}
+  public MicroInterval(long intervalMicros) {
+    this.intervalMicros = intervalMicros;
+  }
 
-	/**
-	 * Gets the interval in microseconds.
-	 */
-	public long getIntervalMicros() {
-		return intervalMicros;
-	}
+  /**
+   * Gets the interval in microseconds.
+   */
+  public long getIntervalMicros() {
+    return intervalMicros;
+  }
 
-	@Override
-	public String toString() {
-		return toString(intervalMicros);
-	}
+  @Override
+  public String toString() {
+    return toString(intervalMicros);
+  }
 
-	public static String toString(long intervalMicros) {
-		if(intervalMicros < 1000000) return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalMicros, 3));
-		return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalMicros/1000, 3));
-	}
+  public static String toString(long intervalMicros) {
+    if (intervalMicros < 1000000) {
+      return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalMicros, 3));
+    }
+    return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalMicros/1000, 3));
+  }
 
-	@Override
-	public int compareTo(MicroInterval o) {
-		if(intervalMicros<o.intervalMicros) return -1;
-		if(intervalMicros>o.intervalMicros) return 1;
-		return 0;
-	}
+  @Override
+  public int compareTo(MicroInterval o) {
+    if (intervalMicros<o.intervalMicros) {
+      return -1;
+    }
+    if (intervalMicros>o.intervalMicros) {
+      return 1;
+    }
+    return 0;
+  }
 }

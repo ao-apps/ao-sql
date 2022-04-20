@@ -35,36 +35,40 @@ import java.util.ResourceBundle;
  */
 public final class MilliInterval implements Serializable, Comparable<MilliInterval> {
 
-	private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MilliInterval.class);
+  private static final Resources RESOURCES = Resources.getResources(ResourceBundle::getBundle, MilliInterval.class);
 
-	private static final long serialVersionUID = 1;
+  private static final long serialVersionUID = 1;
 
-	private final long milliInterval;
+  private final long milliInterval;
 
-	public MilliInterval(long milliInterval) {
-		this.milliInterval = milliInterval;
-	}
+  public MilliInterval(long milliInterval) {
+    this.milliInterval = milliInterval;
+  }
 
-	/**
-	 * Gets the interval in milliseconds.
-	 */
-	public long getIntervalMillis() {
-		return milliInterval;
-	}
+  /**
+   * Gets the interval in milliseconds.
+   */
+  public long getIntervalMillis() {
+    return milliInterval;
+  }
 
-	@Override
-	public String toString() {
-		return toString(milliInterval);
-	}
+  @Override
+  public String toString() {
+    return toString(milliInterval);
+  }
 
-	public static String toString(long interval) {
-		return RESOURCES.getMessage("toString", BigDecimal.valueOf(interval, 3));
-	}
+  public static String toString(long interval) {
+    return RESOURCES.getMessage("toString", BigDecimal.valueOf(interval, 3));
+  }
 
-	@Override
-	public int compareTo(MilliInterval o) {
-		if(milliInterval<o.milliInterval) return -1;
-		if(milliInterval>o.milliInterval) return 1;
-		return 0;
-	}
+  @Override
+  public int compareTo(MilliInterval o) {
+    if (milliInterval<o.milliInterval) {
+      return -1;
+    }
+    if (milliInterval>o.milliInterval) {
+      return 1;
+    }
+    return 0;
+  }
 }

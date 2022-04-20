@@ -49,68 +49,68 @@ import java.sql.SQLException;
 @Deprecated
 public class WrappedSQLException extends SQLException {
 
-	private static final long serialVersionUID = 1884080138318429559L;
+  private static final long serialVersionUID = 1884080138318429559L;
 
-	private final String sqlString;
+  private final String sqlString;
 
-	/**
-	 * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.sql.PreparedStatement)} instead of
-	 *              wrapping exceptions.
-	 */
-	@Deprecated
-	public WrappedSQLException(
-		SQLException cause,
-		PreparedStatement pstmt
-	) {
-		this(cause, pstmt.toString());
-	}
+  /**
+   * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.sql.PreparedStatement)} instead of
+   *              wrapping exceptions.
+   */
+  @Deprecated
+  public WrappedSQLException(
+    SQLException cause,
+    PreparedStatement pstmt
+  ) {
+    this(cause, pstmt.toString());
+  }
 
-	/**
-	 * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
-	 *              wrapping exceptions.
-	 */
-	@Deprecated
-	public WrappedSQLException(
-		SQLException cause,
-		String sqlString
-	) {
-		this(
-			cause.getMessage() + System.lineSeparator() + "SQL:" + System.lineSeparator() + sqlString,
-			cause.getSQLState(),
-			cause.getErrorCode(),
-			cause,
-			sqlString
-		);
-	}
+  /**
+   * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
+   *              wrapping exceptions.
+   */
+  @Deprecated
+  public WrappedSQLException(
+    SQLException cause,
+    String sqlString
+  ) {
+    this(
+      cause.getMessage() + System.lineSeparator() + "SQL:" + System.lineSeparator() + sqlString,
+      cause.getSQLState(),
+      cause.getErrorCode(),
+      cause,
+      sqlString
+    );
+  }
 
-	/**
-	 * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
-	 *              wrapping exceptions.
-	 */
-	@Deprecated
-	public WrappedSQLException(String reason, String sqlState, int vendorCode, Throwable cause, String sqlString) {
-		super(reason, sqlState, vendorCode, cause);
-		this.sqlString = sqlString;
-	}
+  /**
+   * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
+   *              wrapping exceptions.
+   */
+  @Deprecated
+  public WrappedSQLException(String reason, String sqlState, int vendorCode, Throwable cause, String sqlString) {
+    super(reason, sqlState, vendorCode, cause);
+    this.sqlString = sqlString;
+  }
 
-	public String getSqlString() {
-		return sqlString;
-	}
+  public String getSqlString() {
+    return sqlString;
+  }
 
-	static {
-		ErrorPrinter.addCustomMessageHandler((Throwable thrown, Appendable out, int indent) -> {
-			if(thrown instanceof WrappedSQLException) {
-				ErrorPrinter.CustomMessageHandler.printMessage(out, indent, "SQL Statement.....: ", ((WrappedSQLException)thrown).getSqlString());
-			}
-		});
-		Throwables.registerSurrogateFactory(WrappedSQLException.class, (template, cause) ->
-			new WrappedSQLException(
-				template.getMessage(),
-				template.getSQLState(),
-				template.getErrorCode(),
-				cause,
-				template.sqlString
-			)
-		);
-	}
+  static {
+    ErrorPrinter.addCustomMessageHandler((Throwable thrown, Appendable out, int indent) -> {
+      if (thrown instanceof WrappedSQLException) {
+        ErrorPrinter.CustomMessageHandler.printMessage(out, indent, "SQL Statement.....: ", ((WrappedSQLException)thrown).getSqlString());
+      }
+    });
+    Throwables.registerSurrogateFactory(WrappedSQLException.class, (template, cause) ->
+      new WrappedSQLException(
+        template.getMessage(),
+        template.getSQLState(),
+        template.getErrorCode(),
+        cause,
+        template.sqlString
+      )
+    );
+  }
 }

@@ -33,49 +33,53 @@ import java.io.Serializable;
  */
 public final class Interval implements Serializable, Comparable<Interval> {
 
-	private static final long serialVersionUID = 1;
+  private static final long serialVersionUID = 1;
 
-	private final long interval;
+  private final long interval;
 
-	public Interval(long seconds) {
-		this.interval = seconds;
-	}
+  public Interval(long seconds) {
+    this.interval = seconds;
+  }
 
-	public Interval(long minutes, long seconds) {
-		this(
-			minutes * 60
-			+ seconds
-		);
-	}
+  public Interval(long minutes, long seconds) {
+    this(
+      minutes * 60
+      + seconds
+    );
+  }
 
-	public Interval(long hours, long minutes, long seconds) {
-		this(
-			hours * 3600
-			+ minutes * 60
-			+ seconds
-		);
-	}
+  public Interval(long hours, long minutes, long seconds) {
+    this(
+      hours * 3600
+      + minutes * 60
+      + seconds
+    );
+  }
 
-	/**
-	 * Gets the interval in seconds.
-	 */
-	public long getInterval() {
-		return interval;
-	}
+  /**
+   * Gets the interval in seconds.
+   */
+  public long getInterval() {
+    return interval;
+  }
 
-	@Override
-	public String toString() {
-		return toString(interval);
-	}
+  @Override
+  public String toString() {
+    return toString(interval);
+  }
 
-	public static String toString(long interval) {
-		return Strings.getDecimalTimeLengthString(interval*1000, false);
-	}
+  public static String toString(long interval) {
+    return Strings.getDecimalTimeLengthString(interval*1000, false);
+  }
 
-	@Override
-	public int compareTo(Interval o) {
-		if(interval<o.interval) return -1;
-		if(interval>o.interval) return 1;
-		return 0;
-	}
+  @Override
+  public int compareTo(Interval o) {
+    if (interval<o.interval) {
+      return -1;
+    }
+    if (interval>o.interval) {
+      return 1;
+    }
+    return 0;
+  }
 }

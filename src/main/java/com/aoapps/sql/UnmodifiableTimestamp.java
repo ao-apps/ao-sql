@@ -32,107 +32,111 @@ import java.sql.Timestamp;
  */
 public final class UnmodifiableTimestamp extends Timestamp implements Cloneable {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Creates a new UnmodifiableTimestamp from a Timestamp.
-	 * 
-	 * If the wrapped timestamp is null, returns null.
-	 * If the wrapped timestamp is already unmodifiable, returns it.
-	 * Otherwise returns a new timestamp with the same value.
-	 */
-	public static UnmodifiableTimestamp valueOf(Timestamp other) {
-		if(other==null) return null;
-		if(other instanceof UnmodifiableTimestamp) return (UnmodifiableTimestamp)other;
-		return new UnmodifiableTimestamp(other.getTime(), other.getNanos());
-	}
+  /**
+   * Creates a new UnmodifiableTimestamp from a Timestamp.
+   *
+   * If the wrapped timestamp is null, returns null.
+   * If the wrapped timestamp is already unmodifiable, returns it.
+   * Otherwise returns a new timestamp with the same value.
+   */
+  public static UnmodifiableTimestamp valueOf(Timestamp other) {
+    if (other == null) {
+      return null;
+    }
+    if (other instanceof UnmodifiableTimestamp) {
+      return (UnmodifiableTimestamp)other;
+    }
+    return new UnmodifiableTimestamp(other.getTime(), other.getNanos());
+  }
 
-	public UnmodifiableTimestamp(long time, int nanos) {
-		super(time);
-		super.setNanos(nanos);
-	}
+  public UnmodifiableTimestamp(long time, int nanos) {
+    super(time);
+    super.setNanos(nanos);
+  }
 
-	public UnmodifiableTimestamp(long time) {
-		super(time);
-	}
+  public UnmodifiableTimestamp(long time) {
+    super(time);
+  }
 
-	/**
-	 * @deprecated instead use the constructor <code>Timestamp(long millis)</code>
-	 */
-	@Deprecated
-	public UnmodifiableTimestamp(int year, int month, int date, int hour, int minute, int second, int nano) {
-		super(year, month, date, hour, minute, second, nano);
-	}
+  /**
+   * @deprecated instead use the constructor <code>Timestamp(long millis)</code>
+   */
+  @Deprecated
+  public UnmodifiableTimestamp(int year, int month, int date, int hour, int minute, int second, int nano) {
+    super(year, month, date, hour, minute, second, nano);
+  }
 
-	/**
-	 * Return a copy of this object.
-	 */
-	@Override
-	public UnmodifiableTimestamp clone() {
-		return (UnmodifiableTimestamp)super.clone();
-	}
+  /**
+   * Return a copy of this object.
+   */
+  @Override
+  public UnmodifiableTimestamp clone() {
+    return (UnmodifiableTimestamp)super.clone();
+  }
 
-	/**
-	 * @deprecated As of JDK version 1.1,
-	 */
-	@Deprecated
-	@Override
-	public void setYear(int year) {
-		throw new UnsupportedOperationException();
-	}
+  /**
+   * @deprecated As of JDK version 1.1,
+   */
+  @Deprecated
+  @Override
+  public void setYear(int year) {
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * @deprecated As of JDK version 1.1,
-	 */
-	@Deprecated
-	@Override
-	public void setMonth(int month) {
-		throw new UnsupportedOperationException();
-	}
+  /**
+   * @deprecated As of JDK version 1.1,
+   */
+  @Deprecated
+  @Override
+  public void setMonth(int month) {
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * @deprecated As of JDK version 1.1,
-	 */
-	@Deprecated
-	@Override
-	public void setDate(int month) {
-		throw new UnsupportedOperationException();
-	}
+  /**
+   * @deprecated As of JDK version 1.1,
+   */
+  @Deprecated
+  @Override
+  public void setDate(int month) {
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * @deprecated As of JDK version 1.1,
-	 */
-	@Deprecated
-	@Override
-	public void setHours(int month) {
-		throw new UnsupportedOperationException();
-	}
+  /**
+   * @deprecated As of JDK version 1.1,
+   */
+  @Deprecated
+  @Override
+  public void setHours(int month) {
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * @deprecated As of JDK version 1.1,
-	 */
-	@Deprecated
-	@Override
-	public void setMinutes(int month) {
-		throw new UnsupportedOperationException();
-	}
+  /**
+   * @deprecated As of JDK version 1.1,
+   */
+  @Deprecated
+  @Override
+  public void setMinutes(int month) {
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * @deprecated As of JDK version 1.1,
-	 */
-	@Deprecated
-	@Override
-	public void setSeconds(int month) {
-		throw new UnsupportedOperationException();
-	}
+  /**
+   * @deprecated As of JDK version 1.1,
+   */
+  @Deprecated
+  @Override
+  public void setSeconds(int month) {
+    throw new UnsupportedOperationException();
+  }
 
-	@Override
-	public void setTime(long time) {
-		throw new UnsupportedOperationException();
-	}
+  @Override
+  public void setTime(long time) {
+    throw new UnsupportedOperationException();
+  }
 
-	@Override
-	public void setNanos(int n) {
-		throw new UnsupportedOperationException();
-	}
+  @Override
+  public void setNanos(int n) {
+    throw new UnsupportedOperationException();
+  }
 }

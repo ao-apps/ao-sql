@@ -32,15 +32,17 @@ import java.sql.Connection;
  */
 public final class Connections {
 
-	/** Make no instances. */
-	private Connections() {throw new AssertionError();}
+  /** Make no instances. */
+  private Connections() {
+    throw new AssertionError();
+  }
 
-	/**
-	 * The default {@linkplain Connection#getTransactionIsolation() transaction isolation}.
-	 * It is expected that all new {@link Connection} will have this as a default, as well
-	 * as all pooled connections be reset to this default.
-	 *
-	 * @see  Connection#TRANSACTION_READ_COMMITTED
-	 */
-	public static final int DEFAULT_TRANSACTION_ISOLATION = Connection.TRANSACTION_READ_COMMITTED;
+  /**
+   * The default {@linkplain Connection#getTransactionIsolation() transaction isolation}.
+   * It is expected that all new {@link Connection} will have this as a default, as well
+   * as all pooled connections be reset to this default.
+   *
+   * @see  Connection#TRANSACTION_READ_COMMITTED
+   */
+  public static final int DEFAULT_TRANSACTION_ISOLATION = Connection.TRANSACTION_READ_COMMITTED;
 }
