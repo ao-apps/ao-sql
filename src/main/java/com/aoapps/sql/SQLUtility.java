@@ -194,16 +194,16 @@ public final class SQLUtility {
       return null;
     }
     return CalendarUtils.parseDateTime(
-      dateTime,
-      timeZone,
-      (GregorianCalendar gcal, int nanos) -> {
-        long millis = gcal.getTimeInMillis();
-        long seconds = millis / 1000;
-        if ((millis % 1000) < 0) {
-          seconds--;
+        dateTime,
+        timeZone,
+        (GregorianCalendar gcal, int nanos) -> {
+          long millis = gcal.getTimeInMillis();
+          long seconds = millis / 1000;
+          if ((millis % 1000) < 0) {
+            seconds--;
+          }
+          return newTimestamp(seconds, nanos);
         }
-        return newTimestamp(seconds, nanos);
-      }
     );
   }
 
@@ -274,16 +274,16 @@ public final class SQLUtility {
       pennies = -pennies;
     }
     sb
-      .append(pennies / 100)
-      .append('.')
+        .append(pennies / 100)
+        .append('.')
     ;
     pennies %= 100;
     if (pennies < 10) {
       sb.append('0');
     }
     return sb
-      .append(pennies)
-      .toString()
+        .append(pennies)
+        .toString()
     ;
   }
 
@@ -297,16 +297,16 @@ public final class SQLUtility {
       pennies = -pennies;
     }
     sb
-      .append(pennies / 100)
-      .append('.')
+        .append(pennies / 100)
+        .append('.')
     ;
-    int i = (int)(pennies % 100);
+    int i = (int) (pennies % 100);
     if (i < 10) {
       sb.append('0');
     }
     return sb
-      .append(i)
-      .toString()
+        .append(i)
+        .toString()
     ;
   }
 
@@ -317,35 +317,35 @@ public final class SQLUtility {
   public static int parseDecimal2(String decimal2) {
     // Get the sign first, treat as negative, then apply the sign
     boolean isNegative;
-    if (decimal2.length()>0 && decimal2.charAt(0) == '-') {
-      isNegative=true;
-      decimal2=decimal2.substring(1);
+    if (decimal2.length() > 0 && decimal2.charAt(0) == '-') {
+      isNegative = true;
+      decimal2 = decimal2.substring(1);
     } else {
-      isNegative=false;
+      isNegative = false;
     }
 
     // Add zero to beginning if starts with .
-    if (decimal2.length()>0 && decimal2.charAt(0) == '.') {
-      decimal2='0'+decimal2;
+    if (decimal2.length() > 0 && decimal2.charAt(0) == '.') {
+      decimal2 = '0' + decimal2;
     }
 
     // Allow for incomplete data like 2, 2., and 2.3
     if (decimal2.indexOf('.') == -1) {
       decimal2 += ".00";
-    } else if (decimal2.charAt(decimal2.length()-1) == '.') {
+    } else if (decimal2.charAt(decimal2.length() - 1) == '.') {
       decimal2 += "00";
-    } else if (decimal2.length() >= 2 && decimal2.charAt(decimal2.length()-2) == '.') {
+    } else if (decimal2.length() >= 2 && decimal2.charAt(decimal2.length() - 2) == '.') {
       decimal2 += '0';
     }
 
     int len = decimal2.length();
     int dollars = Integer.parseInt(decimal2.substring(0, len - 3));
     int pennies = Integer.parseInt(decimal2.substring(len - 2));
-    long result = (isNegative?-1l:1l)*(dollars * 100l + pennies);
-    if (result<Integer.MIN_VALUE || result>Integer.MAX_VALUE) {
+    long result = (isNegative ? -1l : 1l) * (dollars * 100l + pennies);
+    if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE) {
       throw new NumberFormatException("Out of range during conversion");
     }
-    return (int)result;
+    return (int) result;
   }
 
   /**
@@ -355,31 +355,31 @@ public final class SQLUtility {
   public static long parseLongDecimal2(String decimal2) {
     // Get the sign first, treat as negative, then apply the sign
     boolean isNegative;
-    if (decimal2.length()>0 && decimal2.charAt(0) == '-') {
-      isNegative=true;
-      decimal2=decimal2.substring(1);
+    if (decimal2.length() > 0 && decimal2.charAt(0) == '-') {
+      isNegative = true;
+      decimal2 = decimal2.substring(1);
     } else {
-      isNegative=false;
+      isNegative = false;
     }
 
     // Add zero to beginning if starts with .
-    if (decimal2.length()>0 && decimal2.charAt(0) == '.') {
-      decimal2='0'+decimal2;
+    if (decimal2.length() > 0 && decimal2.charAt(0) == '.') {
+      decimal2 = '0' + decimal2;
     }
 
     // Allow for incomplete data like 2, 2., and 2.3
     if (decimal2.indexOf('.') == -1) {
       decimal2 += ".00";
-    } else if (decimal2.charAt(decimal2.length()-1) == '.') {
+    } else if (decimal2.charAt(decimal2.length() - 1) == '.') {
       decimal2 += "00";
-    } else if (decimal2.length() >= 2 && decimal2.charAt(decimal2.length()-2) == '.') {
+    } else if (decimal2.length() >= 2 && decimal2.charAt(decimal2.length() - 2) == '.') {
       decimal2 += '0';
     }
 
     int len = decimal2.length();
     long dollars = Long.parseLong(decimal2.substring(0, len - 3));
     int pennies = Integer.parseInt(decimal2.substring(len - 2));
-    return (isNegative?-1:1)*(dollars * 100 + pennies);
+    return (isNegative ? -1 : 1) * (dollars * 100 + pennies);
   }
 
   /**
@@ -392,8 +392,8 @@ public final class SQLUtility {
       millis = -millis;
     }
     sb
-      .append(millis / 1000)
-      .append('.')
+        .append(millis / 1000)
+        .append('.')
     ;
     millis %= 1000;
     if (millis < 10) {
@@ -402,8 +402,8 @@ public final class SQLUtility {
       sb.append('0');
     }
     return sb
-      .append(millis)
-      .toString()
+        .append(millis)
+        .toString()
     ;
   }
 
@@ -417,8 +417,8 @@ public final class SQLUtility {
       millis = -millis;
     }
     sb
-      .append(millis / 1000)
-      .append('.')
+        .append(millis / 1000)
+        .append('.')
     ;
     millis %= 1000;
     if (millis < 10) {
@@ -427,8 +427,8 @@ public final class SQLUtility {
       sb.append('0');
     }
     return sb
-      .append(millis)
-      .toString()
+        .append(millis)
+        .toString()
     ;
   }
 
@@ -447,29 +447,29 @@ public final class SQLUtility {
     }
 
     // Add zero to beginning if starts with .
-    if (decimal3.length()>0 && decimal3.charAt(0) == '.') {
-      decimal3='0'+decimal3;
+    if (decimal3.length() > 0 && decimal3.charAt(0) == '.') {
+      decimal3 = '0' + decimal3;
     }
 
     // Allow for incomplete data like 2, 2., 2.3, and 2.34
     if (decimal3.indexOf('.') == -1) {
       decimal3 += ".000";
-    } else if (decimal3.charAt(decimal3.length()-1) == '.') {
+    } else if (decimal3.charAt(decimal3.length() - 1) == '.') {
       decimal3 += "000";
-    } else if (decimal3.length() >= 2 && decimal3.charAt(decimal3.length()-2) == '.') {
+    } else if (decimal3.length() >= 2 && decimal3.charAt(decimal3.length() - 2) == '.') {
       decimal3 += "00";
-    } else if (decimal3.length() >= 3 && decimal3.charAt(decimal3.length()-3) == '.') {
+    } else if (decimal3.length() >= 3 && decimal3.charAt(decimal3.length() - 3) == '.') {
       decimal3 += '0';
     }
 
     int len = decimal3.length();
     int whole = Integer.parseInt(decimal3.substring(0, len - 4));
     int millis = Integer.parseInt(decimal3.substring(len - 3));
-    long result = (isNegative?-1L:1L)*(whole * 1000L + millis);
-    if (result<Integer.MIN_VALUE || result>Integer.MAX_VALUE) {
+    long result = (isNegative ? -1L : 1L) * (whole * 1000L + millis);
+    if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE) {
       throw new NumberFormatException("Out of range during conversion");
     }
-    return (int)result;
+    return (int) result;
   }
 
   /**
@@ -487,25 +487,25 @@ public final class SQLUtility {
     }
 
     // Add zero to beginning if starts with .
-    if (decimal3.length()>0 && decimal3.charAt(0) == '.') {
-      decimal3='0'+decimal3;
+    if (decimal3.length() > 0 && decimal3.charAt(0) == '.') {
+      decimal3 = '0' + decimal3;
     }
 
     // Allow for incomplete data like 2, 2., 2.3, and 2.34
     if (decimal3.indexOf('.') == -1) {
       decimal3 += ".000";
-    } else if (decimal3.charAt(decimal3.length()-1) == '.') {
+    } else if (decimal3.charAt(decimal3.length() - 1) == '.') {
       decimal3 += "000";
-    } else if (decimal3.length() >= 2 && decimal3.charAt(decimal3.length()-2) == '.') {
+    } else if (decimal3.length() >= 2 && decimal3.charAt(decimal3.length() - 2) == '.') {
       decimal3 += "00";
-    } else if (decimal3.length() >= 3 && decimal3.charAt(decimal3.length()-3) == '.') {
+    } else if (decimal3.length() >= 3 && decimal3.charAt(decimal3.length() - 3) == '.') {
       decimal3 += '0';
     }
 
     int len = decimal3.length();
     long whole = Long.parseLong(decimal3.substring(0, len - 4));
     int millis = Integer.parseInt(decimal3.substring(len - 3));
-    return (isNegative?-1L:1L)*(whole * 1000L + millis);
+    return (isNegative ? -1L : 1L) * (whole * 1000L + millis);
   }
 
   private static final String EOL = System.lineSeparator();
@@ -543,13 +543,13 @@ public final class SQLUtility {
    * @param  alignRights Will print all cells centered when this is {@code null} (used for header row)
    */
   private static void printRow(
-    Object[] row,
-    Appendable out,
-    boolean[] alignRights,
-    String[] toStrings,
-    int[] lineCounts,
-    int[] lineValueIndexes,
-    int[] widest
+      Object[] row,
+      Appendable out,
+      boolean[] alignRights,
+      String[] toStrings,
+      int[] lineCounts,
+      int[] lineValueIndexes,
+      int[] widest
   ) throws IOException {
     int numCols = lineCounts.length;
 
@@ -768,7 +768,7 @@ public final class SQLUtility {
       }
       out.append("(");
       out.append(rowCount == 0 ? "No" : Integer.toString(rowCount));
-      out.append(rowCount == 1?" row)":" rows)");
+      out.append(rowCount == 1 ? " row)" : " rows)");
       out.append(EOL);
       if (UNICODE_TABLES || rowCount > 0) {
         out.append(EOL);
@@ -829,28 +829,28 @@ public final class SQLUtility {
   public static void printTable(Object[] titles, final Collection<Object> values, Appendable out, boolean isInteractive, final boolean[] alignRights) throws IOException {
     final int numCols = alignRights.length;
     printTable(
-      titles,
-      // Java 9: new Iterator<>
-      () -> new Iterator<Object[]>() {
-        private final Iterator<Object> valuesIter = values.iterator();
+        titles,
+        // Java 9: new Iterator<>
+        () -> new Iterator<Object[]>() {
+          private final Iterator<Object> valuesIter = values.iterator();
 
-        @Override
-        public boolean hasNext() {
-          return valuesIter.hasNext();
-        }
-
-        @Override
-        public Object[] next() {
-          Object[] row = new Object[numCols];
-          for (int i = 0; i < numCols; i++) {
-            row[i] = valuesIter.next();
+          @Override
+          public boolean hasNext() {
+            return valuesIter.hasNext();
           }
-          return row;
-        }
-      },
-      out,
-      isInteractive,
-      alignRights
+
+          @Override
+          public Object[] next() {
+            Object[] row = new Object[numCols];
+            for (int i = 0; i < numCols; i++) {
+              row[i] = valuesIter.next();
+            }
+            return row;
+          }
+        },
+        out,
+        isInteractive,
+        alignRights
     );
   }
 
@@ -864,30 +864,30 @@ public final class SQLUtility {
   public static void printTable(Object[] titles, final Object[] values, Appendable out, boolean isInteractive, boolean[] alignRights) throws IOException {
     final int numCols = alignRights.length;
     printTable(
-      titles,
-      // Java 9: new Iterator<>
-      () -> new Iterator<Object[]>() {
-        private int index = 0;
+        titles,
+        // Java 9: new Iterator<>
+        () -> new Iterator<Object[]>() {
+          private int index = 0;
 
-        @Override
-        public boolean hasNext() {
-          return index < values.length;
-        }
-
-        @Override
-        public Object[] next() throws NoSuchElementException {
-          if (!hasNext()) {
-            throw new NoSuchElementException();
+          @Override
+          public boolean hasNext() {
+            return index < values.length;
           }
-          Object[] row = new Object[numCols];
-          System.arraycopy(values, index, row, 0, numCols);
-          index += numCols;
-          return row;
-        }
-      },
-      out,
-      isInteractive,
-      alignRights
+
+          @Override
+          public Object[] next() throws NoSuchElementException {
+            if (!hasNext()) {
+              throw new NoSuchElementException();
+            }
+            Object[] row = new Object[numCols];
+            System.arraycopy(values, index, row, 0, numCols);
+            index += numCols;
+            return row;
+          }
+        },
+        out,
+        isInteractive,
+        alignRights
     );
   }
 
@@ -921,9 +921,9 @@ public final class SQLUtility {
         return xClass.cast(t);
       }
       throw Throwables.wrap(
-        t,
-        IllegalArgumentException.class,
-        cause -> new IllegalArgumentException(message, cause)
+          t,
+          IllegalArgumentException.class,
+          cause -> new IllegalArgumentException(message, cause)
       );
     }
   }

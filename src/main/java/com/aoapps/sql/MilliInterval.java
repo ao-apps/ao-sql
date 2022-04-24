@@ -63,10 +63,10 @@ public final class MilliInterval implements Serializable, Comparable<MilliInterv
 
   @Override
   public int compareTo(MilliInterval o) {
-    if (milliInterval<o.milliInterval) {
+    if (milliInterval < o.milliInterval) {
       return -1;
     }
-    if (milliInterval>o.milliInterval) {
+    if (milliInterval > o.milliInterval) {
       return 1;
     }
     return 0;

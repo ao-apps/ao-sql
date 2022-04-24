@@ -62,17 +62,17 @@ public final class NanoInterval implements Serializable, Comparable<NanoInterval
       return RESOURCES.getMessage("toString.micro", BigDecimal.valueOf(intervalNanos, 3));
     }
     if (intervalNanos < 1000000000) {
-      return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalNanos/1000, 3));
+      return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalNanos / 1000, 3));
     }
-    return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalNanos/1000000, 3));
+    return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalNanos / 1000000, 3));
   }
 
   @Override
   public int compareTo(NanoInterval o) {
-    if (intervalNanos<o.intervalNanos) {
+    if (intervalNanos < o.intervalNanos) {
       return -1;
     }
-    if (intervalNanos>o.intervalNanos) {
+    if (intervalNanos > o.intervalNanos) {
       return 1;
     }
     return 0;

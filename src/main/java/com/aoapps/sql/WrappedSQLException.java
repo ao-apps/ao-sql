@@ -59,8 +59,8 @@ public class WrappedSQLException extends SQLException {
    */
   @Deprecated
   public WrappedSQLException(
-    SQLException cause,
-    PreparedStatement pstmt
+      SQLException cause,
+      PreparedStatement pstmt
   ) {
     this(cause, pstmt.toString());
   }
@@ -71,15 +71,15 @@ public class WrappedSQLException extends SQLException {
    */
   @Deprecated
   public WrappedSQLException(
-    SQLException cause,
-    String sqlString
+      SQLException cause,
+      String sqlString
   ) {
     this(
-      cause.getMessage() + System.lineSeparator() + "SQL:" + System.lineSeparator() + sqlString,
-      cause.getSQLState(),
-      cause.getErrorCode(),
-      cause,
-      sqlString
+        cause.getMessage() + System.lineSeparator() + "SQL:" + System.lineSeparator() + sqlString,
+        cause.getSQLState(),
+        cause.getErrorCode(),
+        cause,
+        sqlString
     );
   }
 
@@ -100,17 +100,17 @@ public class WrappedSQLException extends SQLException {
   static {
     ErrorPrinter.addCustomMessageHandler((Throwable thrown, Appendable out, int indent) -> {
       if (thrown instanceof WrappedSQLException) {
-        ErrorPrinter.CustomMessageHandler.printMessage(out, indent, "SQL Statement.....: ", ((WrappedSQLException)thrown).getSqlString());
+        ErrorPrinter.CustomMessageHandler.printMessage(out, indent, "SQL Statement.....: ", ((WrappedSQLException) thrown).getSqlString());
       }
     });
     Throwables.registerSurrogateFactory(WrappedSQLException.class, (template, cause) ->
-      new WrappedSQLException(
-        template.getMessage(),
-        template.getSQLState(),
-        template.getErrorCode(),
-        cause,
-        template.sqlString
-      )
+        new WrappedSQLException(
+            template.getMessage(),
+            template.getSQLState(),
+            template.getErrorCode(),
+            cause,
+            template.sqlString
+        )
     );
   }
 }

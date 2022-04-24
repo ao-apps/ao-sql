@@ -61,15 +61,15 @@ public final class MicroInterval implements Serializable, Comparable<MicroInterv
     if (intervalMicros < 1000000) {
       return RESOURCES.getMessage("toString.milli", BigDecimal.valueOf(intervalMicros, 3));
     }
-    return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalMicros/1000, 3));
+    return RESOURCES.getMessage("toString.second", BigDecimal.valueOf(intervalMicros / 1000, 3));
   }
 
   @Override
   public int compareTo(MicroInterval o) {
-    if (intervalMicros<o.intervalMicros) {
+    if (intervalMicros < o.intervalMicros) {
       return -1;
     }
-    if (intervalMicros>o.intervalMicros) {
+    if (intervalMicros > o.intervalMicros) {
       return 1;
     }
     return 0;

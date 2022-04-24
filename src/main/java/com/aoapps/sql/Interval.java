@@ -43,16 +43,16 @@ public final class Interval implements Serializable, Comparable<Interval> {
 
   public Interval(long minutes, long seconds) {
     this(
-      minutes * 60
-      + seconds
+        minutes * 60
+            + seconds
     );
   }
 
   public Interval(long hours, long minutes, long seconds) {
     this(
-      hours * 3600
-      + minutes * 60
-      + seconds
+        hours * 3600
+            + minutes * 60
+            + seconds
     );
   }
 
@@ -69,15 +69,15 @@ public final class Interval implements Serializable, Comparable<Interval> {
   }
 
   public static String toString(long interval) {
-    return Strings.getDecimalTimeLengthString(interval*1000, false);
+    return Strings.getDecimalTimeLengthString(interval * 1000, false);
   }
 
   @Override
   public int compareTo(Interval o) {
-    if (interval<o.interval) {
+    if (interval < o.interval) {
       return -1;
     }
-    if (interval>o.interval) {
+    if (interval > o.interval) {
       return 1;
     }
     return 0;

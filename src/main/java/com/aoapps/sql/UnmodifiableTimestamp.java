@@ -46,7 +46,7 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
       return null;
     }
     if (other instanceof UnmodifiableTimestamp) {
-      return (UnmodifiableTimestamp)other;
+      return (UnmodifiableTimestamp) other;
     }
     return new UnmodifiableTimestamp(other.getTime(), other.getNanos());
   }
@@ -73,7 +73,7 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
    */
   @Override
   public UnmodifiableTimestamp clone() {
-    return (UnmodifiableTimestamp)super.clone();
+    return (UnmodifiableTimestamp) super.clone();
   }
 
   /**
