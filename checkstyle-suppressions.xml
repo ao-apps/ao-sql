@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ao-sql - SQL and JDBC utilities.
+Copyright (C) 2022  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of ao-sql.
+
+ao-sql is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ao-sql is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with ao-sql.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE suppressions PUBLIC
+  "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+  "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+
+  <!-- TODO: Complete Javadocs -->
+  <suppress checks="(MissingJavadocMethod|SummaryJavadoc)" />
+
+  <!-- Using "Ex" for generic exceptions, since "E" if often "Element" -->
+  <suppress
+    checks="MethodTypeParameterName"
+    message="'Ex'"
+  />
+
+  <!-- Consistency with standard "SQLException" -->
+  <suppress
+    checks="AbbreviationAsWordInName"
+    files="[/\\]com[/\\]aoapps[/\\]sql[/\\]SQLStreamables\.java$"
+    message="'SQLStreamables'"
+  />
+  <suppress
+    checks="AbbreviationAsWordInName"
+    files="[/\\]com[/\\]aoapps[/\\]sql[/\\]SQLUtility\.java$"
+    message="'SQLUtility'"
+  />
+  <suppress
+    checks="AbbreviationAsWordInName"
+    files="[/\\]com[/\\]aoapps[/\\]sql[/\\]WrappedSQLException\.java$"
+    message="'WrappedSQLException'"
+  />
+
+  <!-- Parameter name "yyyy_mm_dd" helps clarify expected pattern -->
+  <suppress
+    checks="ParameterName"
+    files="[/\\]com[/\\]aoapps[/\\]sql[/\\]SQLUtility\.java$"
+    message="'yyyy_mm_dd'"
+  />
+
+</suppressions>

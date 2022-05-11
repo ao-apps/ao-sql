@@ -116,6 +116,7 @@ public final class SQLUtility {
   }
 
   /**
+   * @param yyyy_mm_dd  The date in YYYY-MM-DD format.
    * @param timeZone  The time zone to use or {@code null} to use the default time zone
    *
    * @see  CalendarUtils#parseDate(java.lang.String, java.util.TimeZone)
@@ -128,6 +129,8 @@ public final class SQLUtility {
   }
 
   /**
+   * @param yyyy_mm_dd  The date in YYYY-MM-DD format.
+   *
    * @see  CalendarUtils#parseDate(java.lang.String)
    */
   public static Date parseDate(String yyyy_mm_dd) throws IllegalArgumentException {
@@ -275,16 +278,14 @@ public final class SQLUtility {
     }
     sb
         .append(pennies / 100)
-        .append('.')
-    ;
+        .append('.');
     pennies %= 100;
     if (pennies < 10) {
       sb.append('0');
     }
     return sb
         .append(pennies)
-        .toString()
-    ;
+        .toString();
   }
 
   /**
@@ -298,16 +299,14 @@ public final class SQLUtility {
     }
     sb
         .append(pennies / 100)
-        .append('.')
-    ;
+        .append('.');
     int i = (int) (pennies % 100);
     if (i < 10) {
       sb.append('0');
     }
     return sb
         .append(i)
-        .toString()
-    ;
+        .toString();
   }
 
   /**
@@ -341,7 +340,7 @@ public final class SQLUtility {
     int len = decimal2.length();
     int dollars = Integer.parseInt(decimal2.substring(0, len - 3));
     int pennies = Integer.parseInt(decimal2.substring(len - 2));
-    long result = (isNegative ? -1l : 1l) * (dollars * 100l + pennies);
+    long result = (isNegative ? -1L : 1L) * (dollars * 100L + pennies);
     if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE) {
       throw new NumberFormatException("Out of range during conversion");
     }
@@ -393,8 +392,7 @@ public final class SQLUtility {
     }
     sb
         .append(millis / 1000)
-        .append('.')
-    ;
+        .append('.');
     millis %= 1000;
     if (millis < 10) {
       sb.append("00");
@@ -403,8 +401,7 @@ public final class SQLUtility {
     }
     return sb
         .append(millis)
-        .toString()
-    ;
+        .toString();
   }
 
   /**
@@ -418,8 +415,7 @@ public final class SQLUtility {
     }
     sb
         .append(millis / 1000)
-        .append('.')
-    ;
+        .append('.');
     millis %= 1000;
     if (millis < 10) {
       sb.append("00");
@@ -428,8 +424,7 @@ public final class SQLUtility {
     }
     return sb
         .append(millis)
-        .toString()
-    ;
+        .toString();
   }
 
   /**
@@ -538,7 +533,7 @@ public final class SQLUtility {
   }
 
   /**
-   * Prints a single row of interactive output
+   * Prints a single row of interactive output.
    *
    * @param  alignRights Will print all cells centered when this is {@code null} (used for header row)
    */
@@ -907,18 +902,18 @@ public final class SQLUtility {
    * @deprecated  This is only used by old, deprecated implementations.
    */
   @Deprecated
-  private static <X extends Throwable> X newException(Class<? extends X> xClass, String message) {
+  private static <Ex extends Throwable> Ex newException(Class<? extends Ex> exClass, String message) {
     try {
       try {
-        return xClass.getConstructor(String.class).newInstance(message);
+        return exClass.getConstructor(String.class).newInstance(message);
       } catch (InvocationTargetException e) {
         // Unwrap cause for more direct stack traces
         Throwable cause = e.getCause();
         throw (cause == null) ? e : cause;
       }
     } catch (Throwable t) {
-      if (xClass.isInstance(t)) {
-        return xClass.cast(t);
+      if (exClass.isInstance(t)) {
+        return exClass.cast(t);
       }
       throw Throwables.wrap(
           t,
@@ -931,7 +926,7 @@ public final class SQLUtility {
   /**
    * Converts a number of seconds and nanoseconds into a given {@link Timestamp}.
    */
-  public static <X extends Throwable> void toTimestamp(long seconds, int nanos, Timestamp ts, Function<? super String, ? extends X> xSupplier) throws X {
+  public static <Ex extends Throwable> void toTimestamp(long seconds, int nanos, Timestamp ts, Function<? super String, ? extends Ex> exSupplier) throws Ex {
     String message;
     // Avoid underflow or overflow on conversion to millis
     if (seconds > MAX_TIMESTAMP_SECONDS) {
@@ -943,7 +938,7 @@ public final class SQLUtility {
       ts.setNanos(nanos);
       return;
     }
-    throw xSupplier.apply(message);
+    throw exSupplier.apply(message);
   }
 
   /**
@@ -953,8 +948,8 @@ public final class SQLUtility {
    *              typically with lambda constructor reference
    */
   @Deprecated
-  public static <X extends Throwable> void toTimestamp(long seconds, int nanos, Timestamp ts, Class<? extends X> xClass) throws X {
-    toTimestamp(seconds, nanos, ts, message -> newException(xClass, message));
+  public static <Ex extends Throwable> void toTimestamp(long seconds, int nanos, Timestamp ts, Class<? extends Ex> exClass) throws Ex {
+    toTimestamp(seconds, nanos, ts, message -> newException(exClass, message));
   }
 
   /**
@@ -967,9 +962,9 @@ public final class SQLUtility {
   /**
    * Converts a number of seconds and nanoseconds into a new {@link Timestamp}.
    */
-  public static <X extends Throwable> Timestamp newTimestamp(long seconds, int nanos, Function<? super String, ? extends X> xSupplier) throws X {
+  public static <Ex extends Throwable> Timestamp newTimestamp(long seconds, int nanos, Function<? super String, ? extends Ex> exSupplier) throws Ex {
     Timestamp ts = new Timestamp(0);
-    toTimestamp(seconds, nanos, ts, xSupplier);
+    toTimestamp(seconds, nanos, ts, exSupplier);
     return ts;
   }
 
@@ -980,8 +975,8 @@ public final class SQLUtility {
    *              typically with lambda constructor reference
    */
   @Deprecated
-  public static <X extends Throwable> Timestamp newTimestamp(long seconds, int nanos, Class<? extends X> xClass) throws X {
-    return newTimestamp(seconds, nanos, message -> newException(xClass, message));
+  public static <Ex extends Throwable> Timestamp newTimestamp(long seconds, int nanos, Class<? extends Ex> exClass) throws Ex {
+    return newTimestamp(seconds, nanos, message -> newException(exClass, message));
   }
 
   /**
@@ -994,7 +989,7 @@ public final class SQLUtility {
   /**
    * Converts a number of seconds and nanoseconds into a new {@link UnmodifiableTimestamp}.
    */
-  public static <X extends Throwable> UnmodifiableTimestamp newUnmodifiableTimestamp(long seconds, int nanos, Function<? super String, ? extends X> xSupplier) throws X {
+  public static <Ex extends Throwable> UnmodifiableTimestamp newUnmodifiableTimestamp(long seconds, int nanos, Function<? super String, ? extends Ex> exSupplier) throws Ex {
     String message;
     // Avoid underflow or overflow on conversion to millis
     if (seconds > MAX_TIMESTAMP_SECONDS) {
@@ -1004,7 +999,7 @@ public final class SQLUtility {
     } else {
       return new UnmodifiableTimestamp(seconds * 1000, nanos);
     }
-    throw xSupplier.apply(message);
+    throw exSupplier.apply(message);
   }
 
   /**
@@ -1014,8 +1009,8 @@ public final class SQLUtility {
    *              typically with lambda constructor reference
    */
   @Deprecated
-  public static <X extends Throwable> UnmodifiableTimestamp newUnmodifiableTimestamp(long seconds, int nanos, Class<? extends X> xClass) throws X {
-    return newUnmodifiableTimestamp(seconds, nanos, message -> newException(xClass, message));
+  public static <Ex extends Throwable> UnmodifiableTimestamp newUnmodifiableTimestamp(long seconds, int nanos, Class<? extends Ex> exClass) throws Ex {
+    return newUnmodifiableTimestamp(seconds, nanos, message -> newException(exClass, message));
   }
 
   /**

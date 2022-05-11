@@ -36,10 +36,11 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
 
   /**
    * Creates a new UnmodifiableTimestamp from a Timestamp.
-   *
-   * If the wrapped timestamp is null, returns null.
-   * If the wrapped timestamp is already unmodifiable, returns it.
-   * Otherwise returns a new timestamp with the same value.
+   * <ol>
+   * <li>If the wrapped timestamp is null, returns null.</li>
+   * <li>If the wrapped timestamp is already unmodifiable, returns it.</li>
+   * <li>Otherwise returns a new timestamp with the same value.</li>
+   * </ol>
    */
   public static UnmodifiableTimestamp valueOf(Timestamp other) {
     if (other == null) {
@@ -77,6 +78,8 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @deprecated As of JDK version 1.1,
    */
   @Deprecated
@@ -86,6 +89,8 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @deprecated As of JDK version 1.1,
    */
   @Deprecated
@@ -95,6 +100,8 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @deprecated As of JDK version 1.1,
    */
   @Deprecated
@@ -104,6 +111,8 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @deprecated As of JDK version 1.1,
    */
   @Deprecated
@@ -113,6 +122,8 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @deprecated As of JDK version 1.1,
    */
   @Deprecated
@@ -122,6 +133,8 @@ public final class UnmodifiableTimestamp extends Timestamp implements Cloneable 
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @deprecated As of JDK version 1.1,
    */
   @Deprecated

@@ -40,7 +40,7 @@ import java.sql.SQLException;
  *              The primary purpose of wrapping exceptions was to attach the SQL statement being processed at the time
  *              of failure.  This statement is only used in error reporting, specifically via {@link ErrorPrinter}.  We
  *              have created a new way to accomplish this, without altering or wrapping any exceptions:
- *              {@linkplain ErrorPrinter#addSQL(java.lang.Throwable, java.sql.PreparedStatement) register an exception and corresponding SQL statement}
+ *              {@linkplain ErrorPrinter#addSql(java.lang.Throwable, java.sql.PreparedStatement) register an exception and corresponding SQL statement}
  *              directly with {@link ErrorPrinter}, which will then automatically be included in error reports.
  *              </p>
  *
@@ -54,7 +54,7 @@ public class WrappedSQLException extends SQLException {
   private final String sqlString;
 
   /**
-   * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.sql.PreparedStatement)} instead of
+   * @deprecated  Please use {@link ErrorPrinter#addSql(java.lang.Throwable, java.sql.PreparedStatement)} instead of
    *              wrapping exceptions.
    */
   @Deprecated
@@ -66,7 +66,7 @@ public class WrappedSQLException extends SQLException {
   }
 
   /**
-   * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
+   * @deprecated  Please use {@link ErrorPrinter#addSql(java.lang.Throwable, java.lang.String)} instead of
    *              wrapping exceptions.
    */
   @Deprecated
@@ -84,7 +84,7 @@ public class WrappedSQLException extends SQLException {
   }
 
   /**
-   * @deprecated  Please use {@link ErrorPrinter#addSQL(java.lang.Throwable, java.lang.String)} instead of
+   * @deprecated  Please use {@link ErrorPrinter#addSql(java.lang.Throwable, java.lang.String)} instead of
    *              wrapping exceptions.
    */
   @Deprecated
