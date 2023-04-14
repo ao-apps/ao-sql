@@ -22,7 +22,7 @@ SQL and JDBC utilities.
 * [Project Home](https://oss.aoapps.com/sql/)
 * [Changelog](https://oss.aoapps.com/sql/changelog)
 * [API Docs](https://oss.aoapps.com/sql/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/search?namespace=com.aoapps&q=a%3Aao-sql)
+* [Maven Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-sql)
 * [GitHub](https://github.com/ao-apps/ao-sql)
 
 ## Modules
