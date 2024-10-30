@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -47,9 +47,8 @@ public final class SQLStreamables {
   /**
    * Reads a {@link Timestamp}, maintaining the full nanosecond precision.
    * Time zone offset is not maintained.
-   * <p>
-   * See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.
-   * </p>
+   *
+   * <p>See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.</p>
    */
   public static Timestamp readTimestamp(DataInputStream in) throws IOException {
     long seconds = in.readLong();
@@ -69,9 +68,8 @@ public final class SQLStreamables {
   /**
    * Reads an {@link UnmodifiableTimestamp}, maintaining the full nanosecond precision.
    * Time zone offset is not maintained.
-   * <p>
-   * See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.
-   * </p>
+   *
+   * <p>See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.</p>
    */
   public static UnmodifiableTimestamp readUnmodifiableTimestamp(DataInputStream in) throws IOException {
     long seconds = in.readLong();
@@ -91,15 +89,13 @@ public final class SQLStreamables {
   /**
    * Writes a {@link Timestamp}, maintaining the full nanosecond precision.
    * Time zone offset is not maintained.
-   * <p>
-   * The wire protocol is {@link DataOutputStream#writeLong(long)} number of seconds followed
-   * by {@link StreamableOutput#writeCompressedInt(int) compressed int} number of nanoseconds.
-   * </p>
-   * <p>
-   * This is deliberately compatible with {@link Instant} that is part of Java 8.
+   *
+   * <p>The wire protocol is {@link DataOutputStream#writeLong(long)} number of seconds followed
+   * by {@link StreamableOutput#writeCompressedInt(int) compressed int} number of nanoseconds.</p>
+   *
+   * <p>This is deliberately compatible with {@link Instant} that is part of Java 8.
    * Once Java 8 is our minimum Java version, many uses of {@link Timestamp} will
-   * change to {@link Instant}.
-   * </p>
+   * change to {@link Instant}.</p>
    */
   public static void writeTimestamp(Timestamp ts, DataOutputStream out) throws IOException {
     // Java 1.8: Math.floorDiv

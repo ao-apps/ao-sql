@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2013, 2016, 2018, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2013, 2016, 2018, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -54,14 +54,12 @@ public final class SQLUtility {
    * This is hard-coded for now, but this decision might be affected
    * later when readline is integrated.  There may be a way to automatically
    * determine which table format is best instead of assuming UNICODE.
-   * <p>
-   * When true, is similar to <code>psql</code> with <code>\pset linestyle unicode</code>
-   * and <code>\pset border 2</code>
-   * </p>
-   * <p>
-   * When false, is similar to <code>psql</code> with <code>\pset linestyle old-ascii</code>
-   * and <code>\pset border 1</code>
-   * </p>
+   *
+   * <p>When true, is similar to <code>psql</code> with <code>\pset linestyle unicode</code>
+   * and <code>\pset border 2</code></p>
+   *
+   * <p>When false, is similar to <code>psql</code> with <code>\pset linestyle old-ascii</code>
+   * and <code>\pset border 1</code></p>
    */
   private static final boolean UNICODE_TABLES = true;
 

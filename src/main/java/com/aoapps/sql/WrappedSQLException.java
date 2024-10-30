@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2016, 2017, 2018, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2016, 2017, 2018, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -36,13 +36,12 @@ import java.sql.SQLException;
  *              handle different conditions accordingly.  However, wrapping the original exception defeats this, as it
  *              just become a generic {@link SQLException}, albeit with SQL STATE and such copied from the original
  *              exception.
- *              <p>
- *              The primary purpose of wrapping exceptions was to attach the SQL statement being processed at the time
+ *
+ *              <p>The primary purpose of wrapping exceptions was to attach the SQL statement being processed at the time
  *              of failure.  This statement is only used in error reporting, specifically via {@link ErrorPrinter}.  We
  *              have created a new way to accomplish this, without altering or wrapping any exceptions:
  *              {@linkplain ErrorPrinter#addSql(java.lang.Throwable, java.sql.PreparedStatement) register an exception and corresponding SQL statement}
- *              directly with {@link ErrorPrinter}, which will then automatically be included in error reports.
- *              </p>
+ *              directly with {@link ErrorPrinter}, which will then automatically be included in error reports.</p>
  *
  * @author  AO Industries, Inc.
  */

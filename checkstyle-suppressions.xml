@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-sql - SQL and JDBC utilities.
-Copyright (C) 2022, 2023  AO Industries, Inc.
+Copyright (C) 2022, 2023, 2024  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -29,6 +29,12 @@ along with ao-sql.  If not, see <https://www.gnu.org/licenses/>.
 
   <!-- TODO: Complete Javadocs -->
   <suppress checks="(MissingJavadocMethod|SummaryJavadoc)" />
+
+  <!-- Cannot find how to allow <p> inside @deprecated -->
+  <suppress
+    checks="JavadocParagraph"
+    files="[/\\]com[/\\]aoapps[/\\]sql[/\\]WrappedSQLException\.java$"
+  />
 
   <!-- Using "Ex" for generic exceptions, since "E" is often "Element" -->
   <suppress
