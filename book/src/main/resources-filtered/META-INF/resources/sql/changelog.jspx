@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-sql - SQL and JDBC utilities.
-Copyright (C) 2020, 2021, 2022, 2023  AO Industries, Inc.
+Copyright (C) 2020, 2021, 2022, 2023, 2025  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -37,7 +37,7 @@ along with ao-sql.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2020-11-04T16:00:35-06:00"
-    dateModified="2022-02-16T01:04:16-06:00"
+    dateModified="2025-02-12T02:29:49Z"
   >
     <c:set var="latestRelease" value="2.0.1" />
     <c:if test="${
@@ -52,7 +52,11 @@ along with ao-sql.  If not, see <https://www.gnu.org/licenses/>.
         artifactId="@{documented.artifactId}"
         repository="@{nexusUrl}content/repositories/snapshots/"
         scmUrl="@{project.scm.url}"
-      />
+      >
+        <ul>
+          <li>Minimum Java version changed from 1.8 to 11.</li>
+        </ul>
+      </changelog:release>
     </c:if>
 
     <changelog:release

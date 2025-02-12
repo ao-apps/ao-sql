@@ -1,6 +1,6 @@
 /*
  * ao-sql - SQL and JDBC utilities.
- * Copyright (C) 2020, 2021, 2022, 2024  AO Industries, Inc.
+ * Copyright (C) 2020, 2021, 2022, 2024, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -98,12 +98,8 @@ public final class SQLStreamables {
    * change to {@link Instant}.</p>
    */
   public static void writeTimestamp(Timestamp ts, DataOutputStream out) throws IOException {
-    // Java 1.8: Math.floorDiv
     long millis = ts.getTime();
-    long seconds = millis / 1000;
-    if ((millis % 1000) < 0) {
-      seconds--;
-    }
+    long seconds = Math.floorDiv(millis, 1000);
     out.writeLong(seconds);
     assert StreamableOutput.MAX_COMPRESSED_INT_VALUE >= 999999999 : "All nano range (0 - 999999999) will fit in compressed ints";
     StreamableOutput.writeCompressedInt(ts.getNanos(), out);
