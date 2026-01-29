@@ -815,7 +815,7 @@ public final class SQLUtility {
   /**
    * @param values  One element for each row and column
    *
-   * @deprecated  Please use {@link #printTable(java.lang.Object[], java.lang.Iterable, java.lang.Appendable, boolean, boolean[])}
+   * @deprecated  Please use {@link SQLUtility#printTable(java.lang.Object[], java.lang.Iterable, java.lang.Appendable, boolean, boolean[])}
    *              when possible, as it may provide for more efficiency on large datasets.
    */
   @Deprecated
@@ -849,7 +849,7 @@ public final class SQLUtility {
   /**
    * @param values  One element for each row and column
    *
-   * @deprecated  Please use {@link #printTable(java.lang.Object[], java.lang.Iterable, java.lang.Appendable, boolean, boolean[])}
+   * @deprecated  Please use {@link SQLUtility#printTable(java.lang.Object[], java.lang.Iterable, java.lang.Appendable, boolean, boolean[])}
    *              when possible, as it may provide for more efficiency on large datasets.
    */
   @Deprecated
@@ -940,7 +940,7 @@ public final class SQLUtility {
   /**
    * Converts a number of seconds and nanoseconds into a given {@link Timestamp}.
    *
-   * @deprecated  Please use {@link #toTimestamp(long, int, java.sql.Timestamp, java.util.function.Function)},
+   * @deprecated  Please use {@link SQLUtility#toTimestamp(long, int, java.sql.Timestamp, java.util.function.Function)},
    *              typically with lambda constructor reference
    */
   @Deprecated
@@ -967,7 +967,7 @@ public final class SQLUtility {
   /**
    * Converts a number of seconds and nanoseconds into a new {@link Timestamp}.
    *
-   * @deprecated  Please use {@link #newTimestamp(long, int, java.util.function.Function)},
+   * @deprecated  Please use {@link SQLUtility#newTimestamp(long, int, java.util.function.Function)},
    *              typically with lambda constructor reference
    */
   @Deprecated
@@ -1001,7 +1001,7 @@ public final class SQLUtility {
   /**
    * Converts a number of seconds and nanoseconds into a new {@link UnmodifiableTimestamp}.
    *
-   * @deprecated  Please use {@link #newUnmodifiableTimestamp(long, int, java.util.function.Function)},
+   * @deprecated  Please use {@link SQLUtility#newUnmodifiableTimestamp(long, int, java.util.function.Function)},
    *              typically with lambda constructor reference
    */
   @Deprecated

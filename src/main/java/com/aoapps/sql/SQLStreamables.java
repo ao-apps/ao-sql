@@ -48,7 +48,7 @@ public final class SQLStreamables {
    * Reads a {@link Timestamp}, maintaining the full nanosecond precision.
    * Time zone offset is not maintained.
    *
-   * <p>See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.</p>
+   * <p>See  {@link SQLStreamables#writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.</p>
    */
   public static Timestamp readTimestamp(DataInputStream in) throws IOException {
     long seconds = in.readLong();
@@ -59,7 +59,7 @@ public final class SQLStreamables {
   /**
    * Reads a possibly-{@code null} {@link Timestamp}.
    *
-   * @see  #readTimestamp(java.io.DataInputStream)
+   * @see  SQLStreamables#readTimestamp(java.io.DataInputStream)
    */
   public static Timestamp readNullTimestamp(DataInputStream in) throws IOException {
     return in.readBoolean() ? readTimestamp(in) : null;
@@ -69,7 +69,7 @@ public final class SQLStreamables {
    * Reads an {@link UnmodifiableTimestamp}, maintaining the full nanosecond precision.
    * Time zone offset is not maintained.
    *
-   * <p>See  {@link #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.</p>
+   * <p>See  {@link SQLStreamables#writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)} for wire protocol details.</p>
    */
   public static UnmodifiableTimestamp readUnmodifiableTimestamp(DataInputStream in) throws IOException {
     long seconds = in.readLong();
@@ -80,7 +80,7 @@ public final class SQLStreamables {
   /**
    * Reads a possibly-{@code null} {@link UnmodifiableTimestamp}.
    *
-   * @see  #readUnmodifiableTimestamp(java.io.DataInputStream)
+   * @see  SQLStreamables#readUnmodifiableTimestamp(java.io.DataInputStream)
    */
   public static UnmodifiableTimestamp readNullUnmodifiableTimestamp(DataInputStream in) throws IOException {
     return in.readBoolean() ? readUnmodifiableTimestamp(in) : null;
@@ -108,7 +108,7 @@ public final class SQLStreamables {
   /**
    * Writes a possibly-{@code null} {@link Timestamp}.
    *
-   * @see  #writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)
+   * @see  SQLStreamables#writeTimestamp(java.sql.Timestamp, java.io.DataOutputStream)
    */
   public static void writeNullTimestamp(Timestamp ts, DataOutputStream out) throws IOException {
     out.writeBoolean(ts != null);
